@@ -5,7 +5,6 @@ const employeeModel = require('../models/employee.Model');
 const employerModel = require('../models/employer.Model');
 
 
-
 router.get('/loginEmployee', (req, res, next) => {
   res.render('auth/loginEmployee');
 });
@@ -69,10 +68,10 @@ router.post('/singupEmployee', (req, res) => {
 
 
 router.post('/singupEmployer', (req, res) => {
-  const {nameEmployer, emailEmployer, password } = req.body
+  const {name, email, password } = req.body
   console.log(req.body)
 //checking for all the required inputs on the form.
-  if(!nameEmployer|| !emailEmployer || !password ){
+  if(!name|| !email || !password ){
       res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Please fill the form'})
       return;
   }
@@ -96,9 +95,12 @@ router.post('/singupEmployer', (req, res) => {
           .then((hashPass) => {
               console.log(hashPass)
               // create that user in the db
-              employerModel.create({nameEmployer, emailEmployer, passwordHashEmployee: hashPass })
+              employerModel.create({nameEmployer:name, emailEmployer:email, passwordHashEmployer: hashPass })
                 .then(() => {
                     res.redirect('/')
+                })
+                .catch((err)=>{
+                  console.log('error is', err)
                 })
           })
     })
