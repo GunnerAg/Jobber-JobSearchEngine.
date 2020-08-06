@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/users/hiringPropositions.hbs">Hiring Proposition</a>
+</nav>
+
+<h1>Hello {{loggedInUser.name}}</h1>
+
+<div>
+  <div class="employeeImg">
+     <img src="{{loggedInUser.img}}" alt="test">
+  </div>
+
+  <div class="employeeData">
+    <p>Name: {{loggedInUser.companyName}}</p>
+    <p>Location: {{loggedInUser.location}}</p>
+    <p>Email: {{loggedInUser.email}}</p>
+    <p>Adress: {{loggedInUser.adress}}</p>
+  </div>
+
+  <a href="/employerProfile/{{result._id}}/edit">
+    <button type="submit" class="btn btn-primary">Edit</button>
+</a>
+</div>
+
+<div class="bio">
+  {{loggedInUser.bio}}
+</div>
+
+<div>
+  <h3>Keywords</h3>
+</div>

@@ -22,6 +22,7 @@ let offerSchema = new mongoose.Schema({
   },
   //OPTION A:three posible states: ¿pending,rejected,accepted.?
   status: {
+    enum: ['pending', 'rejected', 'accepted'],
     type: String, 
     required: true
   }

@@ -52,6 +52,9 @@ app.locals.title = '';
 const index = require('./routes/index');
 app.use('/', index);
 
+const userProfile = require('./routes/profiles');
+app.use('/', userProfile);
+
 
 module.exports = app;
 
