@@ -2,31 +2,32 @@ const { Schema, model } = require('mongoose');
 
 const employerSchema = new Schema({
     /*Define schema here */
-    companyName: {
+    nameEmployer: {
       type: String, 
       required: true
     },  
     location: {
       type: String,
-      required: true, 
+    
     },
     adress: {
       type: String, 
-      required: true
+      
     },
-    email: {
+    emailEmployer: {
       type: String,
       required: true,
       unique: true, 
     },
-    passwordHash: {
+    passwordHashEmployer: {
       type: String, 
       required: true
-    }
+    },
   },
   {
     timestamps: true
   }
 );
 
- module.exports = model('Employer', employerSchema);
+let employerModel = model('Employer', employerSchema);
+ module.exports = employerModel

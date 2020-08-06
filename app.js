@@ -1,5 +1,5 @@
-require('dotenv').config();
 
+require('dotenv').config();
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -11,13 +11,14 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/awesome-project', {useNewUrlParser: true})
+  .connect('mongodb://localhost/awesome-project', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
+
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -49,11 +50,17 @@ app.locals.title = '';
 
 
 
-const index = require('./routes/index');
+const index = require('./routes/index.routes');
 app.use('/', index);
 
+<<<<<<< HEAD
 const userProfile = require('./routes/profiles');
 app.use('/', userProfile);
+=======
+const auth = require('./routes/auth.routes');
+app.use('/', auth);
+
+>>>>>>> origin/Gunner-branch
 
 
 module.exports = app;

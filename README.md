@@ -69,9 +69,32 @@ JOBBER is an employment application in which employers and employees get in cont
 
 ## Models
 
-Employee model
-Employer model
-Offer model
+Employee model:
+
+    -name.
+    -secondname.
+    -age.
+    -adress.
+    -email.
+    -passwordHash.
+
+Employer model:
+
+    -companyName.
+    -location.
+    -adress.
+    -email.
+    -passwordHash.
+
+
+Offer model:
+
+  -companyName.
+  -companyId.
+  -employeeName.
+  -employeeId.
+  -status.
+
  
 ```
 username: String

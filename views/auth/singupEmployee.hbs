@@ -1,0 +1,54 @@
+<div class="media">
+ <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="logo-Jobber"></a>
+  <div class="media-body">
+    <h5 class="mt-0">SIGN UP FOR EMPLOYEES</h5>
+    Please fill the form bellow.
+  </div>
+
+</div>
+<form method="POST" action="/singupEmployee">
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="nameEmployee">First name</label>
+      <input type="text" name="name" class="form-control" id="nameEmployee" placeholder="Enter First name" >
+      
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="secondnameEmployee">Last name</label>
+      <input type="text" name="secondname" class="form-control" id="secondnameEmployee" placeholder="Enter Last Name" >
+      
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="emailEmployee">Email</label>
+      <input type="email" name="email" class="form-control" id="emailEmployee" placeholder="Enter Email">
+      
+    </div> 
+    <div class="col-md-6 mb-3">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+      <div>
+       Password must be 6 characters and must have a number and a string.
+      </div>
+    </div>
+    <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="age">Age</label>
+      <input type="number" name="age" class="form-control" id="age" placeholder="Enter age" >
+      <div>
+        18+
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="form-group">
+        By singing up you agree the <a href="/termsAndConditions">terms and conditions</a> 
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">SIGN UP</button>
+</form>
+
+{{#if errorMessage}}
+<div class="errMsg">{{errorMessage}}</div>
+{{/if}}
