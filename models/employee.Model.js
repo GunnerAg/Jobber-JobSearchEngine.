@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
-const employerSchema = new Schema({
+const employeeSchema = new Schema({
     /*Define schema here */
-    name: {
+    nameEmployee: {
       type: String, 
       required: true
     },
-    secondname: {
+    secondnameEmployee: {
       type: String, 
       required: true
     },
@@ -14,23 +14,29 @@ const employerSchema = new Schema({
       type: Number, 
       required: true
     },
-    adress: {
-      type: String, 
-      required: true
+    adressEmployee: {
+      type: String,
     },
-    email: {
+    emailEmployee: {
       type: String,
       required: true,
       unique: true, 
     },
-    passwordHash: {
+    passwordHashEmployee: {
       type: String, 
       required: true
-    }
+    },
+    biography:{
+      type:String,
+    },
+    keywords:[{
+      type:String,
+      enum:['','','','']
+    }]
   },
   {
     timestamps: true
   }
 );
-
- module.exports = model('Employee', employerSchema);
+let employeeModel = model('Employee', employeeSchema);
+ module.exports = employeeModel

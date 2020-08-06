@@ -22,11 +22,12 @@ const employerSchema = new Schema({
     passwordHash: {
       type: String, 
       required: true
-    }
+    },
   },
   {
     timestamps: true
   }
 );
 
- module.exports = model('Employer', employerSchema);
+let employerModel = model('Employer', employerSchema);
+ module.exports = employerModel

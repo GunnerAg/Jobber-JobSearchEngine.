@@ -1,8 +1,101 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  background-image: url(/images/bg.jpg);
 }
 
 a {
-  color: #00B7FF;
+  color: #00B7FF; }
+
+#navbar-brand1{
+  padding: 15px;
+  color: black;
+  font-style: italic;
+  font-size: 25px;
+
+}
+#nav-link1{
+  padding: 15px;
+  font-size: 16px;
+  color: black;
+  
+}
+#nav-link2{
+  padding: 15px;
+  font-size: 16px;
+  color: black;
+
+}
+.navbar-text{
+  font-style: italic;
+  font-size:16px ;
+}
+.landingInfo{
+  font-size: 16PX;
+  color: black;
+  margin-top: 3vh;
+  font-style: italic;
+}
+.row{
+  margin-top: 1vh;
+}
+.card{
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.fourOfour1{
+  text-align: center;
+  color: black;
+  font-size: 44px;
+  
+}
+.fourOfour2{
+  text-align: center;
+  color: black;
+  font-size: 40px;
+}
+#fourImg{
+display: flex;
+justify-content: center;
+align-content: flex-start;
+}
+.media{
+  padding-bottom: 2vh;
+}
+#singupEmployee{
+  margin: 1vh;
+}
+#singupEmployer{
+  margin: 1vh;
+}
+.valid-feedback{
+  font-size: 16px;
+}
+.invalid-feedback{
+  font-size: 16px;
+}
+label{
+  font-size: 20px;
+}
+.media-body{
+  font-size: 16px;
+  text-align: center;
+}
+.mt-0{
+  font-size: 25px;
+}
+#emailHelp{
+  font-size: 16px;
+}
+.errMsg{
+  background: #f02b63;
+  box-sizing: border-box;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
 }
