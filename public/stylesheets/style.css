@@ -1,0 +1,62 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  background-image: url(https://wallpaperaccess.com/full/83106.jpg);
+}
+
+a {
+  color: #00B7FF; }
+
+#navbar-brand1{
+  padding: 15px;
+  color: blueviolet;
+  font-style: italic;
+  font-size: 25px;
+
+}
+#nav-link1{
+  padding: 15px;
+  font-size: 16px;
+  color: blueviolet;
+  
+}
+#nav-link2{
+  padding: 15px;
+  font-size: 16px;
+  color: blueviolet;
+
+}
+.navbar-text{
+  font-style: italic;
+  font-size:16px ;
+}
+.landingInfo{
+  font-size: 16PX;
+  color: rgb(175, 134, 0);
+  margin-top: 16px;
+  font-style: italic;
+}
+.row{
+  margin-top: 1vh;
+}
+.card{
+  margin-top: 1vh;
+  text-align: center;
+}
+
+.fourOfour1{
+  text-align: center;
+  color: orange;
+  font-size: 44px;
+  
+}
+.fourOfour2{
+  text-align: center;
+  color: orange;
+  font-size: 40px;
+}
+#fourImg{
+display: flex;
+justify-content: center;
+align-content: flex-start;
+}
