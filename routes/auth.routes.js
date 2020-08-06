@@ -21,6 +21,11 @@ router.get('/singupEmployer', (req, res, next) => {
   res.render('auth/singupEmployer');
 });
 
+
+//----------------------------------EMPLOYEE SIGN UP-----------------------------------//
+
+
+
 router.post('/singupEmployee', (req, res) => {
   const {name, secondname, age, email, password } = req.body
   console.log(req.body)
@@ -64,7 +69,7 @@ router.post('/singupEmployee', (req, res) => {
 
 
 
-//----------------------------------EMPLOYER-----------------------------------//
+//----------------------------------EMPLOYER SIGN UP-----------------------------------//
 
 
 router.post('/singupEmployer', (req, res) => {
@@ -107,3 +112,7 @@ router.post('/singupEmployer', (req, res) => {
 })
 
 module.exports = router;
+
+//----------------------------------EMPLOYEE SIGN IN-----------------------------------//
+
+
