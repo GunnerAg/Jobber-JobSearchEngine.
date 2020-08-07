@@ -116,4 +116,15 @@ label {
   width: 100%;
   text-align: center; }
 
+.errMsg {
+  background: #f02b63;
+  box-sizing: border-box;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */

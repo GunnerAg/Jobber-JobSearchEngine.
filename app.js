@@ -76,14 +76,6 @@ app.use('/', userRouter);
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter);
 
-<<<<<<< HEAD
-const userProfile = require('./routes/profiles');
-app.use('/', userProfile);
-
-const auth = require('./routes/auth.routes');
-app.use('/', auth);
-=======
->>>>>>> origin/Gunner-branch
 
 
 
