@@ -1,0 +1,119 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(/images/bg.jpg);
+  background-position: center; }
+
+a {
+  color: #00B7FF; }
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh; }
+
+#navbarind {
+  opacity: 0.7; }
+
+#navbar-brand1 {
+  padding: 15px;
+  color: black;
+  font-style: italic;
+  font-size: 35px; }
+
+#nav-link1 {
+  padding: 15px;
+  font-size: 16px;
+  color: black; }
+
+#nav-link2 {
+  padding: 15px;
+  font-size: 16px;
+  color: black; }
+
+.navbar-text {
+  font-style: italic;
+  font-size: 16px; }
+
+.form-label {
+  font-size: 25px;
+  color: aquamarine; }
+
+.row {
+  margin-top: 1vh; }
+
+#termBod {
+  background-image: none;
+  background-color: lightskyblue;
+  font-size: 16px; }
+
+.card {
+  margin-top: 5vh;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.card-text {
+  font-size: 20px; }
+
+.card-title {
+  font-size: 35px; }
+
+.fourOfour1 {
+  text-align: center;
+  color: black;
+  font-size: 44px; }
+
+.fourOfour2 {
+  text-align: center;
+  color: black;
+  font-size: 40px; }
+
+#fourImg {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start; }
+
+.media {
+  padding-bottom: 2vh; }
+
+#singupEmployee {
+  margin: 1vh; }
+
+#singupEmployer {
+  margin: 1vh; }
+
+.valid-feedback {
+  font-size: 16px; }
+
+.invalid-feedback {
+  font-size: 16px; }
+
+label {
+  font-size: 20px; }
+
+.media-body {
+  font-size: 16px;
+  text-align: center; }
+
+.mt-0 {
+  font-size: 30px;
+  color: aquamarine; }
+
+#emailHelp {
+  font-size: 16px; }
+
+.errMsg {
+  background: #f02b63;
+  box-sizing: border-box;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */

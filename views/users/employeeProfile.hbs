@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Back to the Main Page</a>
+  <a class="navbar-brand" href="/users/jobPropositions.hbs">Jobs Propositions</a>
+</nav>
+
+<h1>EMPLOYEE PROFILE</h1>
+
+<h1>Hello {{loggedInUser.nameEmployee}}</h1>
+
+<div>
+  
+  <div class="employeeData">
+    <p>Name: {{loggedInUser.nameEmployee}}</p>
+    <p>Second Name: {{loggedInUser.secondnameEmployee}}</p>
+    <p>Age: {{loggedInUser.age}}</p>
+    <p>Email: {{loggedInUser.emailEmployee}}</p>
+    <p>Adress: {{loggedInUser.adressEmployee}}</p>
+  </div>
+    <a href="/employeeProfile/edit">
+   <button type="submit" class="btn btn-primary">Edit</button>
+    
+</div>
+
+<div class="bio">
+  {{loggedInUser.biography}}
+</div>
+
+<div>
+  <h3>{{loggedInUser.keywprds}}</h3>
+</div>
