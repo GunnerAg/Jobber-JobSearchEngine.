@@ -19,6 +19,9 @@ const employerSchema = new Schema({
       required: true,
       unique: true, 
     },
+    info:{
+      type:String,
+    },
     passwordHashEmployer: {
       type: String, 
       required: true

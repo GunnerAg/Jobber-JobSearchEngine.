@@ -1,30 +1,30 @@
 <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Back to the Main Page</a>
   <a class="navbar-brand" href="/users/jobPropositions.hbs">Jobs Propositions</a>
 </nav>
 
-<h1>Hello {{loggedInUser.name}}</h1>
+<h1>EMPLOYEE PROFILE</h1>
+
+<h1>Hello {{loggedInUser.nameEmployee}}</h1>
 
 <div>
-  <div class="employeeImg">
-     <img src="{{loggedInUser.img}}" alt="test">
-  </div>
-
+  
   <div class="employeeData">
-    <p>Name: {{loggedInUser.name}}</p>
-    <p>Second Name: {{loggedInUser.secondname}}</p>
+    <p>Name: {{loggedInUser.nameEmployee}}</p>
+    <p>Second Name: {{loggedInUser.secondnameEmployee}}</p>
     <p>Age: {{loggedInUser.age}}</p>
-    <p>Email: {{loggedInUser.email}}</p>
-    <p>Adress: {{loggedInUser.adress}}</p>
+    <p>Email: {{loggedInUser.emailEmployee}}</p>
+    <p>Adress: {{loggedInUser.adressEmployee}}</p>
   </div>
-    <a href="/employeeProfile/{{result._id}}/edit">
-    <button type="submit" class="btn btn-primary">Edit</button>
-    </a>
+    <a href="/employeeProfile/edit">
+   <button type="submit" class="btn btn-primary">Edit</button>
+    
 </div>
 
 <div class="bio">
-  {{loggedInUser.bio}}
+  {{loggedInUser.biography}}
 </div>
 
 <div>
-  <h3>Keywords</h3>
+  <h3>{{loggedInUser.keywprds}}</h3>
 </div>

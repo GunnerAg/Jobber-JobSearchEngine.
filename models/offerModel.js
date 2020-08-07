@@ -13,11 +13,7 @@ let offerSchema = new mongoose.Schema({
     required: true, 
   },
   status: {
-<<<<<<< HEAD
     enum: ['pending', 'rejected', 'accepted'],
-=======
-    enum:['pending','rejected','accepted'],
->>>>>>> origin/Gunner-branch
     type: String, 
     required: true
   }
