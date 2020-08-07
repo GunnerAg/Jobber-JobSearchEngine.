@@ -2,27 +2,24 @@
   <a class="navbar-brand" href="/users/hiringPropositions.hbs">Hiring Proposition</a>
 </nav>
 
-<h1>Hello {{loggedInUser.name}}</h1>
+<h1>Hello {{loggedInUser.nameEmployer}}</h1>
 
 <div>
-  <div class="employeeImg">
-     <img src="{{loggedInUser.img}}" alt="test">
-  </div>
-
-  <div class="employeeData">
-    <p>Name: {{loggedInUser.companyName}}</p>
+  
+  <div class="employerData">
+    <p>Name: {{loggedInUser.nameEmployer}}</p>
     <p>Location: {{loggedInUser.location}}</p>
-    <p>Email: {{loggedInUser.email}}</p>
+    <p>Email: {{loggedInUser.emailEmployer}}</p>
     <p>Adress: {{loggedInUser.adress}}</p>
   </div>
 
-  <a href="/employerProfile/{{result._id}}/edit">
+  <a href="/employerProfile/{{result._id}}edit">
     <button type="submit" class="btn btn-primary">Edit</button>
 </a>
 </div>
 
 <div class="bio">
-  {{loggedInUser.bio}}
+  {{loggedInUser.info}}
 </div>
 
 <div>

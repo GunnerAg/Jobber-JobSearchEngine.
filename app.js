@@ -48,16 +48,42 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = '';
 
+//COOKIES SETUP
+app.use(cookieParser());
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+ 
+app.use(session({
+  secret: 'my-first-car',
+  cookie: {
+    maxAge: 60*60*24 // 1day // in milliseconds 
+  },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 60*60*24 // 1 day // value in seconds
+  })
+}));
 
 
-const index = require('./routes/index.routes');
-app.use('/', index);
 
+const indexRouter = require('./routes/index.routes');
+app.use('/', indexRouter);
+
+const userRouter = require('./routes/users.routes');
+app.use('/', userRouter);
+
+const authRouter = require('./routes/auth.routes');
+app.use('/', authRouter);
+
+<<<<<<< HEAD
 const userProfile = require('./routes/profiles');
 app.use('/', userProfile);
 
 const auth = require('./routes/auth.routes');
 app.use('/', auth);
+=======
+>>>>>>> origin/Gunner-branch
 
 
 

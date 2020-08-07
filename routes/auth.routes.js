@@ -12,7 +12,7 @@ router.get('/loginEmployee', (req, res, next) => {
 router.get('/loginEmployer', (req, res, next) => {
   res.render('auth/loginEmployer');
 });
-
+//----------------------------------------//
 router.get('/singupEmployee', (req, res, next) => {
   res.render('auth/singupEmployee');
 });
@@ -21,6 +21,15 @@ router.get('/singupEmployer', (req, res, next) => {
   res.render('auth/singupEmployer');
 });
 
+//------------------------------???????????????????????----------------------------//
+
+// router.get('/employeeProfile', (req, res, next) => {
+//   res.render('users/employeeProfile');
+// });
+
+// router.get('/employerProfile', (req, res, next) => {
+//   res.render('users/employerProfile');
+// });
 
 //----------------------------------EMPLOYEE SIGN UP-----------------------------------//
 
@@ -111,8 +120,96 @@ router.post('/singupEmployer', (req, res) => {
     })
 })
 
+
+
+//----------------------------------EMPLOYEE LOG IN-----------------------------------//
+
+
+router.post('/loginEmployee', (req, res) => {
+  const { emailEmployee, password} = req.body
+console.log(req.body)
+  if( !emailEmployee || !password){
+      res.status(500).render('auth/loginEmployee', {errorMessage: 'Please enter all details'})
+      return;
+  }
+
+  const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+  if (!emailReg.test(emailEmployee)){
+    res.status(500).render('auth/loginEmployee', {errorMessage: 'Please enter valid email'})
+    return;
+  }
+
+  const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
+  if (!passReg.test(password)){
+    res.status(500).render('auth/loginEmployee.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    return;
+  }
+  
+  employeeModel.findOne({emailEmployee})
+  
+      .then((employeeData) => {          
+          let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
+          if (doesItMatch){
+              req.session.loggedInUser = employeeData 
+              res.redirect('/employeeProfile')
+          }
+          else {
+            res.status(500).render('auth/loginEmployee', {errorMessage: 'Passwords do not match'})
+          }
+      })
+      .catch((err) => {
+          console.log('Error', err)
+      })
+})
+
+
+//----------------------------------------//
+router.get('/employeeProfile', (req, res) => {
+  res.render('users/employeeProfile.hbs', {loggedInUser: req.session.loggedInUser})
+})
+//----------------------------------EMPLOYER LOG IN-----------------------------------//
+
+
+router.post('/loginEmployer', (req, res) => {
+  const { emailEmployer, password} = req.body
+console.log(req.body)
+  if( !emailEmployer || !password){
+      res.status(500).render('auth/loginEmployer', {errorMessage: 'Please enter all details'})
+      return;
+  }
+
+  const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
+  if (!emailReg.test(emailEmployer)){
+    res.status(500).render('auth/loginEmployer', {errorMessage: 'Please enter valid email'})
+    return;
+  }
+
+  const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
+  if (!passReg.test(password)){
+    res.status(500).render('auth/loginEmployer.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    return;
+  }
+  
+  employerModel.findOne({emailEmployer})
+      .then((employerData) => {          
+          let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
+          if (doesItMatch){
+              req.session.loggedInUser = employerData 
+              res.redirect('/employerProfile')
+          }
+          else {
+            res.status(500).render('auth/loginEmployer', {errorMessage: 'Passwords do not match'})
+          }
+      })
+      .catch((err) => {
+          console.log('Error', err)
+      })
+})
+
+//--------------------------------------------------------//
+router.get('/employerProfile', (req, res) => {
+  res.render('users/employerProfile.hbs', {loggedInUser: req.session.loggedInUser})
+})
+
+
 module.exports = router;
-
-//----------------------------------EMPLOYEE SIGN IN-----------------------------------//
-
-
