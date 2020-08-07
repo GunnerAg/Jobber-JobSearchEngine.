@@ -95,7 +95,7 @@ Offer model:
 
   -companyName.
   -companyId.
-  -employeeName.
+  -nameEmployee.
   -employeeId.
   -status.
 
