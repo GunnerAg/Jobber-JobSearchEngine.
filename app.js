@@ -53,14 +53,12 @@ app.locals.title = '';
 const index = require('./routes/index.routes');
 app.use('/', index);
 
-<<<<<<< HEAD
 const userProfile = require('./routes/profiles');
 app.use('/', userProfile);
-=======
+
 const auth = require('./routes/auth.routes');
 app.use('/', auth);
 
->>>>>>> origin/Gunner-branch
 
 
 module.exports = app;

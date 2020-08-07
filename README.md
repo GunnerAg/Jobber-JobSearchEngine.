@@ -28,19 +28,23 @@ JOBBER is an employment application in which employers and employees get in cont
 
 - GET / 
   - renders the homepage
-- GET /auth/signup
-  - redirects to / if user logged in
-  - renders the signup form (with flash msg)
+  
+- GET /singupEmployee
+  - redirects to / if user logged in succesfully
+  - renders the signup form
 
-- POST /auth/signup
+- POST /singupEmployee
   - redirects to / if user logged in
   - body:
-    - username
-    - email
-    - password
-- GET /auth/login
-  - redirects to / if user logged in
+    - First name
+    - Last name
+    - Email
+    - Password
+
+- GET /loginEmployee
+  - redirects to /employeeProfile if user logged in succesfully
   - renders the login form (with flash msg)
+
 - POST /auth/login
   - redirects to / if user logged in
   - body:
