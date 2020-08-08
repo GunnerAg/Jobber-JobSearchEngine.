@@ -31,7 +31,7 @@ const employeeSchema = new Schema({
     },
     keywords:[{
       type:String,
-      enum:['','','','']
+      enum:['MySQL','Python','C++','C#','Java','Node.js','Ruby','Ruby on Rails','OpenCS','MaríaDB','Symfony','OpenCV','PHP','MongoDB','Django','React','AngularJS','HTML','CSS','Vue.js','JavaScript','TypeScript','Bootstrap','jQuerry','SASS','Ansible','Docker','Bash','Linux Kernel','Git','Debian','AWS','Azure','Kubernetes','Grafana','Apache Spark','Python','Google Analytics','Hadoop','Kibana','R','TensorFlow']
     }]
   },
   {
