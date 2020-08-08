@@ -1,21 +1,27 @@
+<div class="media">
+ <a href="/loginEmployer"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+  <div class="media-body">
+<br></br>
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/users/hiringPropositions.hbs">Hiring Proposition</a>
+  <a class="navbar-brand" href="employerProfile/propositions">Hiring Proposition</a>
+  <a class="navbar-brand" href="employerProfile/search">Search Employees</a>
 </nav>
-
-<h1>Hello {{loggedInUser.nameEmployer}}</h1>
-
+<h1 class="mt-0">Hello {{loggedInUser.nameEmployer}}</h1>
+</div>
+</div>
+<br></br>
 <div>
-  
+  <br>
   <div class="employerData">
-    <p>Name: {{loggedInUser.nameEmployer}}</p>
-    <p>Location: {{loggedInUser.location}}</p>
-    <p>Email: {{loggedInUser.emailEmployer}}</p>
-    <p>Adress: {{loggedInUser.adress}}</p>
-    <p>Info: {{loggedInUser.info}}</p>
+    <h5>Name: {{loggedInUser.nameEmployer}}</h5>
+    <h5>Location: {{loggedInUser.location}}</h5>
+    <h5>Email: {{loggedInUser.emailEmployer}}</h5>
+    <h5>Adress: {{loggedInUser.adress}}</h5>
+    <h5>Info: {{loggedInUser.info}}</h5>
   </div>
 
-  <a href="/employerProfile/{{result._id}}edit">
-    <button type="submit" class="btn btn-primary">Edit</button>
+  <a href="/employerProfile/edit">
+    <button type="submit" class="btn btn-primary" id="btns">Edit</button>
 </a>
 </div>
 

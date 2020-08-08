@@ -1,0 +1,20 @@
+<div class="media">
+ <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+  <div class="media-body">
+<h1 class="mt-0">OFFER</h1>
+</div>
+</div>
+<br></br>
+
+{{#each employeeData}}
+{{this.nameEmployee}} 
+{{/each}}
+
+
+<form method="POST" action="">
+ <div class="form-group">
+    <label for="exampleFormControlTextarea1">Write your offer here</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" id="btns">Send offer</button>
+</form>

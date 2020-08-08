@@ -1,8 +1,17 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url(/images/bg.jpg);
-  background-position: center; }
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite; }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
 
 a {
   color: #00B7FF; }
@@ -40,7 +49,7 @@ a {
 
 .form-label {
   font-size: 25px;
-  color: aquamarine; }
+  color: black; }
 
 .row {
   margin-top: 1vh; }
@@ -79,8 +88,10 @@ a {
 .media {
   padding-bottom: 2vh; }
 
-#singupEmployee {
-  margin: 1vh; }
+#btns {
+  margin: 1vh;
+  background-color: black;
+  border: white; }
 
 #singupEmployer {
   margin: 1vh; }
@@ -100,7 +111,7 @@ label {
 
 .mt-0 {
   font-size: 30px;
-  color: aquamarine; }
+  color: black; }
 
 #emailHelp {
   font-size: 16px; }
@@ -116,15 +127,25 @@ label {
   width: 100%;
   text-align: center; }
 
-.errMsg {
-  background: #f02b63;
-  box-sizing: border-box;
-  font-size: 15px;
-  text-transform: uppercase;
-  color: #fff;
-  margin: 20px auto;
-  padding: 20px;
-  width: 100%;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: black;
+  color: white;
   text-align: center; }
+
+.footercont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
+.footericons {
+  margin-top: 5px; }
+
+#hyplkink {
+  text-decoration: none;
+  color: inherit; }
 
 /*# sourceMappingURL=style.css.map */
