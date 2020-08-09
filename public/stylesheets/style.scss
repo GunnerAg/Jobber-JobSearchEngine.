@@ -164,3 +164,27 @@ label{
   color: inherit;
 }
 
+.img {
+  width: 40px;
+  border-radius: 5px;
+}
+
+.col {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  margin: 10px;
+  padding-top: 5px;
+  
+}
+
+.languages{
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar navbar-light {
+  border-radius: 3px;
+  margin: 10px;
+  padding-top: 5px;
+}
+
