@@ -1,5 +1,32 @@
 <div class="media">
- <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+ <a href="/employeeProfile"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
   <div class="media-body">
+    <a href="/"><img src="/images/iconS/brand1.png" class="mr-3" alt="logo-Jobber" id="brandIcon1"></a>
+       <br></br>
+      <div id="headings"><h2 class="mt-0">JOB PROPOSALS</h2></div>
     </div>
 </div>
+<br></br>
+
+{{#each offerData}}
+<h4 style="text-align: center;">JOB OFFER</h4>
+<ul class="list-group">
+<li class="list-group-item"><strong>Status: </strong>{{this.status}}</li>
+<li class="list-group-item"><strong>Company name: </strong> {{this.companyId.nameEmployer}} </li>
+<li class="list-group-item"><strong>Message: </strong> <br></br>{{this.offerMessage}}</li>
+</ul>
+
+<div class="btnsProfileLinks">
+<form method = "POST" action="/employeeProfile/jobPropositions/{{this._id}}/accepted">
+<button type="submit"  id="btns" class="btn btn-primary" {{#if this.isNotPending}} disabled {{/if}} >
+{{#if this.isAccepted}} ACCEPTED OFFER {{else}} ACCEPT OFFER {{/if}}</button>
+</form>
+
+<form method = "POST" action="/employeeProfile/jobPropositions/{{this._id}}/rejected">
+<button type="submit"  id="btns" class="btn btn-primary"  {{#if this.isNotPending}} disabled {{/if}}>
+{{#if this.isRejected}} REJECTED OFFER {{else}} REJECT OFFER {{/if}}</button>
+</form>
+</div>
+<hr>
+<br></br>
+{{/each}}

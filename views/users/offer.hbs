@@ -1,20 +1,22 @@
 <div class="media">
- <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+ <a href="/recruit"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
   <div class="media-body">
-<h1 class="mt-0">OFFER</h1>
+    <a href="/"><img src="/images/iconS/brand1.png" class="mr-3" alt="logo-Jobber" id="brandIcon1"></a>
+           <br></br>
+  <div id="headings"><h2 class="mt-0">MAKE AN OFFER</h2></div>
 </div>
 </div>
 <br></br>
 
-{{#each employeeData}}
-{{this.nameEmployee}} 
+{{#each result}}
+<h3>{{this.nameEmployee}} </h3>
 {{/each}}
 
 
-<form method="POST" action="">
+<form method="POST" action="/employerProfile/offer/{{result._id}}">
  <div class="form-group">
     <label for="exampleFormControlTextarea1">Write your offer here</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+    <textarea name="offerMessage"class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary" id="btns">Send offer</button>
+  <button type="submit" class="btn btn-primary" id="btns">SEND OFFER</button>
 </form>

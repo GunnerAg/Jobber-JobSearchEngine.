@@ -1,17 +1,33 @@
 <div class="media">
- <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+ <a href="/employerProfile/search"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
   <div class="media-body">
-<h1 class="mt-0">SEARCH RESULTS</h1>
+     <a href="/"><img src="/images/iconS/brand1.png" class="mr-3" alt="logo-Jobber" id="brandIcon1"></a>
+          <div id="headings"> <h2 class="mt-0">SEARCH RESULTS</h2></div>
 </div>
 </div>
 <br></br>
 
+
 {{#each employeeData}}
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-{{this.nameEmployee}} 
-<button class="btn btn-primary" id="btns"><a href="/offer" id="hyplkink">SEND OFFER</a></button>
-</nav>
+   <ul class="list-group">
+      <li class="list-group-item"><strong>Name: </strong>{{this.nameEmployee}} </li>
+      <li class="list-group-item"><strong>Skills: </strong>{{this.keywords}} </li>
+   </ul>
+
+   {{#if this.match}}
+    <button type="button" disabled="true" class="btn btn-primary" id="btns">OFFER SENT</button>
+    {{else}}
+    <button type="button" class="btn btn-primary" id="btns"><a href="/employerProfile/offer/{{this._id}}" id="hyplink">SEND OFFER</a></button>
+   {{/if}}
+    
+<hr>
+<br></br>
 {{/each}}
+
+
+{{#if errorMessage}}
+{{errorMessage}}
+{{/if}}
 
 
 <br></br>

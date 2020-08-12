@@ -2,26 +2,40 @@
   <source src="/videos/background.mp4">
 </video>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarind">
-  <a href="/"><img src="/images/logo.png" class="mr-3" alt="logo-Jobber"></a>
-  <a class="navbar-brand" id="navbar-brand1" href="/">JOBBER</a>
+  <p class="navbar-brand" id="navbar-brand1" ><img src="/images/iconS/brand2.png" id="brandIcon2"></p>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
+      {{#if isEmployee}}
+      <li class="nav-item">
+        <a class="nav-link" id="nav-link2" href="/employeeProfile">Profile</a>
+      </li>
+      {{else if isEmployer}}
+      <li class="nav-item">
+        <a class="nav-link" id="nav-link2" href="/employerProfile">Profile</a>
+      </li>
+      {{else}}
+      {{/if}}
       <li class="nav-item">
         <a class="nav-link" id="nav-link2" href="/about">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="nav-link2" href="/contact">Contact</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nav-link2" href="/singupEmployee">Employee Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nav-link2" href="/singupEmployer">Company Sign Up</a>
+      </li>
     </ul>
     <span class="navbar-text">
-      sign up before logging in
+      Please sign up before logging in!
     </span>
   </div>
 </nav>
-
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
@@ -29,8 +43,7 @@
         <h5 class="card-title" id="card-title" >¿Are you a programmer?</h5>
         <p class="card-text">If you are a programmer of any kind looking to work, just sign up below !
           </p>
-        <a href="/singupEmployee" class="btn btn-primary" id="btns">Sign Up as employee</a>
-        <a href="/loginEmployee" class="btn btn-primary" id="btns">Log In as employee</a>
+          <button  id="btns" class="btn btn-primary" onclick="window.location.href='/loginEmployee';">Log In as employee</button>
       </div>
     </div>
   </div>
@@ -39,8 +52,7 @@
       <div class="card-body">
         <h5 class="card-title">¿Want to hire?</h5>
         <p class="card-text">Are you looking for online solution professionals? dont hesitate just sign up below ! </p>
-        <a href="/singupEmployer" class="btn btn-primary" id="btns">Sign Up as company</a>
-        <a href="/loginEmployer" class="btn btn-primary" id="btns">Log In as company</a>
+         <button  id="btns" class="btn btn-primary" onclick="window.location.href='/loginEmployer';">Log In as company</button>
       </div>
     </div>
   </div>

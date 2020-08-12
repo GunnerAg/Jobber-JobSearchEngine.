@@ -1,27 +1,35 @@
 <div class="media">
- <a href="/loginEmployer"><img src="/images/arrow1.png" class="mr-3" alt="backtomain"></a>
+ <a href="/loginEmployer" ><img src="/images/arrow1.png"  alt="backtomain" class="backArrow"></a>
+ <a href='/logout' ><img src="/images/logout.png" class="logOutIcon"></a>
   <div class="media-body">
-<br></br>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="employerProfile/propositions">Hiring Proposition</a>
-  <a class="navbar-brand" href="employerProfile/search">Search Employees</a>
-</nav>
-<h1 class="mt-0">Hello {{loggedInUser.nameEmployer}}</h1>
+    <a href="/" ><img src="/images/iconS/brand1.png" alt="logo-Jobber" class="mr-3" id="brandIcon1"></a>
+    <br></br>
+  <div id="headings"><h2 class="mt-0">COMPANY PROFILE</h2></div>
+  </div>
 </div>
+<br></br>
+<h3> Welcome to your profile {{loggedInUser.nameEmployer}}</h3>
+<br></br>
+<div class="btnsProfileLinks">
+   <button  id="btns" class="btn btn-primary" onclick="window.location.href='/employerProfile/hiringPropositions';" >HIRE PROPOSAL</a></button>
+   <button  id="btns" class="btn btn-primary" onclick="window.location.href='/employerProfile/recruit';">SEARCH CANDIDATE</a></button>
 </div>
 <br></br>
 <div>
-  <br>
   <div class="employerData">
-    <h5>Name: {{loggedInUser.nameEmployer}}</h5>
-    <h5>Location: {{loggedInUser.location}}</h5>
-    <h5>Email: {{loggedInUser.emailEmployer}}</h5>
-    <h5>Adress: {{loggedInUser.adress}}</h5>
-    <h5>Info: {{loggedInUser.info}}</h5>
+      <h5 class="mt-0" style="text-align: center;">YOUR PROFILE DETAILS</h5>
+      <br></br>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployer}} &nbsp; &nbsp;
+      <strong>Location: </strong> {{loggedInUser.location}} &nbsp; &nbsp;  
+      </li>
+      <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployer}}   &nbsp; &nbsp;
+      <strong>Adress: </strong> {{loggedInUser.adress}}</li>
+      <li class="list-group-item"><strong>Info: </strong>{{loggedInUser.info}}</li>
+    </ul>
   </div>
-
-  <a href="/employerProfile/edit">
-    <button type="submit" class="btn btn-primary" id="btns">Edit</button>
-</a>
+  <div style="text-align: end;">
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/employerProfile/edit';" id="btns">EDIT</button>
+    </div>
 </div>
 

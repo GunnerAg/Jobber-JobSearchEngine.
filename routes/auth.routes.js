@@ -5,31 +5,23 @@ const employeeModel = require('../models/employee.Model');
 const employerModel = require('../models/employer.Model');
 
 
-router.get('/loginEmployee', (req, res, next) => {
-  res.render('auth/loginEmployee');
-});
-
-router.get('/loginEmployer', (req, res, next) => {
-  res.render('auth/loginEmployer');
-});
-//----------------------------------------//
-router.get('/singupEmployee', (req, res, next) => {
-  res.render('auth/singupEmployee');
-});
-
-router.get('/singupEmployer', (req, res, next) => {
-  res.render('auth/singupEmployer');
-});
-
-//------------------------------???????????????????????----------------------------//
-
-// router.get('/employeeProfile', (req, res, next) => {
-//   res.render('users/employeeProfile');
+// router.get('/loginEmployee', (req, res, next) => {
+//   res.render('auth/loginEmployee');
 // });
 
-// router.get('/employerProfile', (req, res, next) => {
-//   res.render('users/employerProfile');
+// router.get('/loginEmployer', (req, res, next) => {
+//   res.render('auth/loginEmployer');
 // });
+// //----------------------------------------//
+// router.get('/singupEmployee', (req, res, next) => {
+//   res.render('auth/singupEmployee');
+// });
+
+// router.get('/singupEmployer', (req, res, next) => {
+//   res.render('auth/singupEmployer');
+// });
+
+
 
 //----------------------------------EMPLOYEE SIGN UP-----------------------------------//
 
@@ -141,13 +133,13 @@ console.log(req.body)
 
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/loginEmployee.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    res.status(500).render('auth/loginEmployee.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
   
   employeeModel.findOne({emailEmployee})
-  
-      .then((employeeData) => {          
+      .then((employeeData) => { 
+        if( typeof emailEmployee ){res.status(500).render('auth/loginEmployee', {errorMessage: 'Wrong email or password!, ¿Dont have an account? Please Sign Up!'})}         
           let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
           if (doesItMatch){
               req.session.loggedInUser = employeeData 
@@ -163,10 +155,10 @@ console.log(req.body)
 })
 
 
-//----------------------------------------//
-router.get('/employeeProfile', (req, res) => {
-  res.render('users/employeeProfile.hbs', {loggedInUser: req.session.loggedInUser})
-})
+//-------------------------ONCE LOGGED IN EMPLOYEE-------------------------------//
+// router.get('/employeeProfile', (req, res) => {
+//   res.render('users/employeeProfile.hbs', {loggedInUser: req.session.loggedInUser})
+// })
 //----------------------------------EMPLOYER LOG IN-----------------------------------//
 
 
@@ -186,12 +178,13 @@ console.log(req.body)
 
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/loginEmployer.hbs', {errorMessage: 'Password must be 6 characters and must have a nu ber and a string'})
+    res.status(500).render('auth/loginEmployer.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
   
   employerModel.findOne({emailEmployer})
-      .then((employerData) => {          
+      .then((employerData) => { 
+        if( typeof emailEmployee ){res.status(500).render('auth/loginEmployer', {errorMessage: 'Wrong email or password!, ¿Dont have an account? Please Sign Up!'})}         
           let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
           if (doesItMatch){
               req.session.loggedInUser = employerData 
@@ -206,9 +199,18 @@ console.log(req.body)
       })
 })
 
-//--------------------------------------------------------//
-router.get('/employerProfile', (req, res) => {
-  res.render('users/employerProfile.hbs', {loggedInUser: req.session.loggedInUser})
+//-------------------------ONCE LOGGED IN EMPLOYER-------------------------------//
+// router.get('/employerProfile', (req, res) => {
+//   res.render('users/employerProfile.hbs', {loggedInUser: req.session.loggedInUser})
+// })
+
+
+//--------------------LOGOUT SESSION----------------------------//
+
+router.get("/logout", (req, res, next)=>{
+  req.session.destroy((err) =>{
+    res.redirect("/")
+  })
 })
 
 
