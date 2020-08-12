@@ -1,0 +1,26 @@
+<div class="media">
+  <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="logo-Jobber"></a>
+  <div class="media-body">
+    <h5 class="mt-0">LOGIN FOR EMPLOYEES</h5>
+    Dont have an account yet? <a href="/singupEmployee">Sign Up Here!</a>
+  </div>
+</div>
+
+<form method = "POST", action= "/loginEmployee">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="emailEmployee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp"  class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{{#if errorMessage}}
+<div class="errMsg">{{errorMessage}}</div>
+{{/if}}

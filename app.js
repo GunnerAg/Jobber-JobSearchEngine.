@@ -1,5 +1,5 @@
-require('dotenv').config();
 
+require('dotenv').config();
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/awesome-project', {useNewUrlParser: true})
+  .connect('mongodb://localhost/awesome-project', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -44,15 +44,39 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = '';
+
+//COOKIES SETUP
+app.use(cookieParser());
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+ 
+app.use(session({
+  secret: 'my-first-car',
+  cookie: {
+    maxAge: 60*60*24 // 1day // in milliseconds 
+  },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 60*60*24 // 1 day // value in seconds
+  })
+}));
 
 
 
-const index = require('./routes/index');
-app.use('/', index);
+const indexRouter = require('./routes/index.routes');
+app.use('/', indexRouter);
+
+const userRouter = require('./routes/users.routes');
+app.use('/', userRouter);
+
+const authRouter = require('./routes/auth.routes');
+app.use('/', authRouter);
+
 
 
 module.exports = app;
+
+
