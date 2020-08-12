@@ -138,8 +138,7 @@ console.log(req.body)
   }
   
   employeeModel.findOne({emailEmployee})
-      .then((employeeData) => { 
-        if( typeof emailEmployee ){res.status(500).render('auth/loginEmployee', {errorMessage: 'Wrong email or password!, ¿Dont have an account? Please Sign Up!'})}         
+      .then((employeeData) => {         
           let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
           if (doesItMatch){
               req.session.loggedInUser = employeeData 
@@ -183,8 +182,7 @@ console.log(req.body)
   }
   
   employerModel.findOne({emailEmployer})
-      .then((employerData) => { 
-        if( typeof emailEmployee ){res.status(500).render('auth/loginEmployer', {errorMessage: 'Wrong email or password!, ¿Dont have an account? Please Sign Up!'})}         
+      .then((employerData) => {         
           let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
           if (doesItMatch){
               req.session.loggedInUser = employerData 
