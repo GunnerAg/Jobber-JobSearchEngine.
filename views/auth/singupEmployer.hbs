@@ -1,7 +1,9 @@
 <div class="media">
- <a href="/"><img src="/images/arrow1.png" class="mr-3" alt="logo-Jobber"></a>
+ <a href="/" class="backArrow"><img src="/images/arrow1.png"  alt="backtomain"></a>
   <div class="media-body">
-    <h5 class="mt-0">COMPANY SIGN UP</h5>
+    <a href="/" class="mr-3"><img src="/images/iconS/brand1.png" alt="logo-Jobber" id="brandIcon1"></a>
+    <br></br>
+          <div id="headings"> <h2 class="mt-0">COMPANY SIGN UP</h2></div>
     Please fill the form bellow.
   </div>
 
@@ -9,7 +11,7 @@
 <form method="POST" action="/singupEmployer">
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <label for="nameEmployer" class="form-label">Company / employeer name</label>
+      <label for="nameEmployer" class="form-label">Company / employer name</label>
       <input type="text" name="name" class="form-control" id="nameEmployer" placeholder="Enter First name" > 
     </div>
   </div>
@@ -31,7 +33,7 @@
         By singing up you agree the <a href="/termsAndConditions">terms and conditions</a> 
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">SIGN UP</button>
+  <button class="btn btn-primary" type="submit" id="btns">SIGN UP</button>
 </form>
 
 {{#if errorMessage}}

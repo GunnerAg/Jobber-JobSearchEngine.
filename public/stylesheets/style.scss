@@ -1,19 +1,40 @@
+
+
 body {
+  background-color: white;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
-  background-image: url(/images/bg.jpg);
-  background-position: center;
+  background: linear-gradient(to left, #fad198, #fdd7a2, #24cac5, #15b4b0);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 a {
-  color: #00B7FF; }
-/* Style the video: 100% width and height to cover the entire window */
+  color: #00B7FF; 
+}
+
+
 #myVideo {
+
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  top: 0;
+  left: 0;
+
 }
 
 #navbarind{
@@ -45,16 +66,14 @@ a {
 }
 .form-label{
   font-size: 25px;
-  color: aquamarine;
+  color: black;
 
 }
 .row{
   margin-top: 1vh;
 }
 #termBod{
-  background-image: none;
-  background-color: lightskyblue;
-  font-size: 16px;
+  font-size: 20px;
 }
 .card{
   margin-top: 5vh;
@@ -70,9 +89,8 @@ a {
 
 .fourOfour1{
   text-align: center;
-  color: black;
+  color:red;
   font-size: 44px;
-  
 }
 .fourOfour2{
   text-align: center;
@@ -85,10 +103,13 @@ justify-content: center;
 align-content: flex-start;
 }
 .media{
-  padding-bottom: 2vh;
+  padding: 2vh;
 }
-#singupEmployee{
+#btns{
   margin: 1vh;
+  color: white;
+  background-color: black;
+  border: white;
 }
 #singupEmployer{
   margin: 1vh;
@@ -107,8 +128,8 @@ label{
   text-align: center;
 }
 .mt-0{
-  font-size: 30px;
-  color: aquamarine;
+  color: black;
+  word-wrap: break-word;
 }
 #emailHelp{
   font-size: 16px;
@@ -118,9 +139,110 @@ label{
   box-sizing: border-box;
   font-size: 15px;
   text-transform: uppercase;
-  color: #fff;
+  color: rgb(255, 255, 255);
   margin: 20px auto;
   padding: 20px;
   width: 100%;
   text-align: center;
+  border: black solid 1px;
+  border-radius: 5px;
+  
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.footercont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100vw;
+  flex-wrap: wrap;
+  list-style-type: none;  
+}
+.footericons{
+  margin-top: 5px;
+ 
+}
+#hyplink{
+  text-decoration:none;
+  color: inherit;
+}
+
+.img {
+  width: 25px;
+  border-radius: 5px;
+}
+
+.col {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  margin: 10px;
+  padding-top: 5px;
+  
+}
+
+.languages{
+  display: flex;
+  justify-content: space-between;
+}
+
+#brandIcon1{
+  width: 50px;
+  border-radius: 5px;
+}
+
+#brandIcon2{
+  width: 120px;
+  border-radius: 5px;
+  justify-content: center;
+  
+}
+#headings{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#recruitResultsData{
+  display: flex;
+}
+.backArrow {
+  position: absolute;
+  top: 10px;
+  left:10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.list-group-item{
+ word-wrap: break-word;
+}
+.btnsProfileLinks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.logOutIcon{
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+hr{
+  border-top: 3px solid rgba(0, 0, 0, 0.2);
+}
+h3{
+  text-align: center;
+}
+#recruitResultsData{
+  word-wrap: break-word;
+
 }

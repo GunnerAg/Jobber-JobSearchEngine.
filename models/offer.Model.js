@@ -3,18 +3,22 @@ const mongoose = require('mongoose');
 let offerSchema = new mongoose.Schema({
 
   companyId: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Employer',
     required: true, 
   },
   employeeId: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Employee',
     required: true, 
   },
   status: {
-    enum: ['pending', 'rejected', 'accepted'],
+    enum: ['PENDING', 'REJECTED', 'ACCEPTED'],
     type: String, 
+    required: true
+  },
+  offerMessage:{
+    type: String,
     required: true
   }
 },
@@ -23,4 +27,4 @@ let offerSchema = new mongoose.Schema({
 }
 );
 
-module.exports = model('Offer', offerSchema);
+module.exports = mongoose.model('Offer', offerSchema);

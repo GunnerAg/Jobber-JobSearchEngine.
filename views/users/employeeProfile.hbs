@@ -1,30 +1,95 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">Back to the Main Page</a>
-  <a class="navbar-brand" href="/users/jobPropositions.hbs">Jobs Propositions</a>
-</nav>
-
-<h1>EMPLOYEE PROFILE</h1>
-
-<h1>Hello {{loggedInUser.nameEmployee}}</h1>
-
-<div>
-  
-  <div class="employeeData">
-    <p>Name: {{loggedInUser.nameEmployee}}</p>
-    <p>Second Name: {{loggedInUser.secondnameEmployee}}</p>
-    <p>Age: {{loggedInUser.age}}</p>
-    <p>Email: {{loggedInUser.emailEmployee}}</p>
-    <p>Adress: {{loggedInUser.adressEmployee}}</p>
+<div class="media">
+ <a href="/loginEmployee"><img src="/images/arrow1.png"  alt="backtomain" class="backArrow"></a>
+ <a href='/logout' ><img src="/images/logout.png" class="logOutIcon"></a>
+  <div class="media-body">
+    <a href="/" ><img src="/images/icons/brand1.png" alt="logo-Jobber" class="mr-3" id="brandIcon1"></a>
+    <br></br>
+  <div id="headings"><h2 class="mt-0">EMPLOYEE PROFILE</h2></div>
   </div>
-    <a href="/employeeProfile/edit">
-   <button type="submit" class="btn btn-primary">Edit</button>
-    
 </div>
-
-<div class="bio">
-  {{loggedInUser.biography}}
-</div>
-
+<br></br>
+  <h3>Welcome to your profile {{loggedInUser.nameEmployee}}</h3>
+  <br></br>
+  <div class="btnsProfileLinks">
+  <button  id="btns" class="btn btn-primary" onclick="window.location.href='/employeeProfile/jobPropositions';">JOB PROPOSITIONS</button>
+  </div>
+<br></br>
 <div>
-  <h3>{{loggedInUser.keywprds}}</h3>
+    <h5 class="mt-0" style="text-align: center;">YOUR PROFILE DETAILS</h5>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployee}} &nbsp; &nbsp;
+    <strong>Second Name: </strong> {{loggedInUser.secondnameEmployee}} &nbsp; &nbsp;  
+    <strong>Age: </strong> {{loggedInUser.age}}</li>
+    <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployee}}   &nbsp; &nbsp;
+    <strong>Adress: </strong> {{loggedInUser.adressEmployee}}</li>
+    <li class="list-group-item"><strong>Biography: </strong> {{loggedInUser.biography}}</li>
+  </ul>
+ <div style="text-align: end;">
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/employeeProfile/edit';" id="btns">EDIT</button>
+ </div>
+ <br></br>
+
+
+<h4 class="mt-0" style="text-align: center;">KEYWORDS</h4>
+<h5 class="mt-0" style="text-align: center;">{{loggedInUser.keywords}}</h5>
+   
+
+{{!-- ------------------------------FORM KEYWORDS------------------------------------------------- --}}
+
+
+
+<form method="POST" action="/employeeProfile">
+<div style="text-align: center;">
+  <button type="submit" class="btn btn-primary" id="btns" >EDIT KEYWORDS</button>
 </div>
+
+
+<div class="container">
+  <div class="row">
+   {{! -- SOME SUPER CRAZY CODE --}}
+    <div class="col">
+      <h4 style="text-align: center;"><strong>BACKEND</strong></h4>
+       
+      {{#each data.backend}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this.name}}" value="{{this.name}}" {{#if this.showLanguage}} checked {{else}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this.name}}.jpg" class = "img" alt="img" > {{this.name}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <div class="col">
+      <h4 style="text-align: center;"><strong>FRONTEND</strong></h4>
+        
+      {{#each data.frontend}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this.name}}" value="{{this.name}}" {{#if this.showLanguage}} checked {{else}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this.name}}.jpg" class = "img" alt="img" > {{this.name}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <br></br>
+    <div class="w-100"></div>
+    <div class="col">
+      <h4 style="text-align: center;"><strong>DEVOPS</strong></h4>
+     
+      {{#each data.devops}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this.name}}" value="{{this.name}}" {{#if this.showLanguage}} checked {{else}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this.name}}.jpg" class = "img" alt="img" > {{this.name}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <br></br>
+    <div class="col">
+      <h4 style="text-align: center;"><strong>DATA ANALYTICS</strong></h4>
+    
+      {{#each data.data}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this.name}}" value="{{this.name}}" {{#if this.showLanguage}} checked {{else}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this.name}}.jpg" class = "img" alt="img" > {{this.name}}</label>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+</form>

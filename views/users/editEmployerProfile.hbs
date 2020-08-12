@@ -1,31 +1,39 @@
-<form method="POST" action="" >
+<div class="media">
+ <a href="/employerProfile"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
+  <div class="media-body">
+    <a href="/" ><img src="/images/iconS/brand1.png" alt="logo-Jobber" class="mr-3" id="brandIcon1"></a>
+    <br></br>
+    <h2 class="mt-0">EDIT PROFILE</h2>
+</div>
+</div>
+<form method="POST" action="/employerProfile/edit" >
 
   <div class="form-group">
-    <label for="employerName">Name</label>
-    <input name="employerName" type="text" class="form-control" id="employerName" value="{{#}}">
+    <label for="nameEmployer"><strong>Name</strong></label>
+    <input name="nameEmployer" type="text" class="form-control" id="nameEmployer" value="{{loggedInUser.nameEmployer}}">
   </div>
 
   <div class="form-group">
-    <label for="employerLocation">Location</label>
-    <input name="employerLocation" type="text" class="form-control" id="employerLocation" value="{{#}}">
+    <label for="location"><strong>Location</strong></label>
+    <input name="location" type="text" class="form-control" id="location" value="{{loggedInUser.location}}">
   </div>
 
   <div class="form-group">
-    <label for="employerEmail">Email</label>
-    <input name="employerEmail" type="text" class="form-control" id="employerEmail" value="{{#}}">
+    <label for="emailEmployer"> <strong>Email</strong></label>
+    <input name="emailEmployer" type="email" class="form-control" id="emailEmployer" value="{{loggedInUser.emailEmployer}}">
   </div>
 
   <div class="form-group">
-    <label for="employerAdress">Adress</label>
-    <input name="employerAdress" type="text" class="form-control" id="employerAdress" value="{{#}}">
+    <label for="adress"> <strong>Adress</strong></label>
+    <input name="adress" type="text" class="form-control" id="adress" value="{{loggedInUser.adress}}">
+  </div>
+
+  <div class="form-group">
+    <label for="info"> <strong>Info</strong></label>
+    <input name="info" type="text" class="form-control" id="info" value="{{loggedInUser.info}}">
   </div>
   
-  <div class="form-group">
-    <label for="employerImage">Image</label>
-    <input name="employerImage" type="text" class="form-control" id="employerImage" value="{{#}}">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-primary" id="btns">EDIT</button>
 </form>
 
 

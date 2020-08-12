@@ -1,4 +1,12 @@
 const { Schema, model } = require('mongoose');
+const data = require('../bin/data');
+
+let myEnum = [];
+for (let key in data ){
+  data[key].forEach((lang) => {
+    myEnum.push(lang)
+  })
+}
 
 const employeeSchema = new Schema({
     /*Define schema here */
@@ -29,9 +37,14 @@ const employeeSchema = new Schema({
     biography:{
       type:String,
     },
+    type:{
+      type:String,
+      required:true,
+      default:'employee'
+    },
     keywords:[{
       type:String,
-      enum:['','','','']
+      enum: myEnum
     }]
   },
   {

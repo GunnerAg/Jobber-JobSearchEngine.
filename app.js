@@ -10,14 +10,16 @@ const logger       = require('morgan');
 const path         = require('path');
 
 
+
 mongoose
-  .connect('mongodb://localhost/awesome-project', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect('mongodb://localhost/Jobber', {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
+
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -56,24 +58,45 @@ const MongoStore = require('connect-mongo')(session);
 app.use(session({
   secret: 'my-first-car',
   cookie: {
-    maxAge: 60*60*24 // 1day // in milliseconds 
+    maxAge: 1000*60*60*24// 1day // in milliseconds 
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 60*60*24 // 1 day // value in seconds
+    ttl: 60*60*24  // 1 day // value in seconds
   })
 }));
 
+
+app.use(function(req, res, next) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  next();
+});
 
 
 const indexRouter = require('./routes/index.routes');
 app.use('/', indexRouter);
 
-const userRouter = require('./routes/users.routes');
-app.use('/', userRouter);
-
 const authRouter = require('./routes/auth.routes');
 app.use('/', authRouter);
+
+const employeeRouter = require('./routes/employee.routes');
+app.use('/', employeeRouter);
+
+const employerRouter = require('./routes/employer.routes');
+app.use('/', employerRouter);
+
+// const userRouter = require('./routes/users.routes');
+// app.use('/', userRouter);
+
+// if (req.session.loggedInUser && req.session.loggedInUser.type === 'employee' ){
+//   const employeeRouter = require('./routes/employee.routes');
+// app.use('/', employeeRouter);
+// }
+// if (req.session.loggedInUser && req.session.loggedInUser.type === 'employer'  ){
+//   const employerRouter = require('./routes/employer.routes');
+// app.use('/', employerRouter);
+// }
+
 
 
 

@@ -1,36 +1,22 @@
 {
-<<<<<<< HEAD
-  "name": "project",
-  "version": "1.0.0",
-  "description": "JOBBER is an employment application in which employers and employees get in contact to look for the best job collaborations. The employers will look in JOBBER's database for the perfect match, and the employees will receive the job offers. Then, they will have the possibility to accept it or refuse it, and then notify to the employer",
-  "main": "app.js",
-  "bin": {
-    "project": "seed.js"
-  },
-=======
   "name": "awesome-project",
   "version": "0.0.0",
   "private": true,
->>>>>>> 4fe493255f9df7e044c7a1e71d19ee1c8b396d57
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-<<<<<<< HEAD
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
-=======
-    "cookie-parser": "^1.4.3",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
->>>>>>> 4fe493255f9df7e044c7a1e71d19ee1c8b396d57
     "hbs": "^4.0.1",
+    "jquery": "^3.5.1",
     "mongoose": "^5.2.10",
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
@@ -38,14 +24,5 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
-<<<<<<< HEAD
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
-=======
   }
->>>>>>> 4fe493255f9df7e044c7a1e71d19ee1c8b396d57
 }

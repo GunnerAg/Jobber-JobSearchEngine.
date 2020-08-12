@@ -26,6 +26,11 @@ const employerSchema = new Schema({
       type: String, 
       required: true
     },
+    type:{
+      type:String,
+      required:true,
+      default:'employer'
+    }
   },
   {
     timestamps: true

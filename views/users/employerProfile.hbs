@@ -1,27 +1,35 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/users/hiringPropositions.hbs">Hiring Proposition</a>
-</nav>
-
-<h1>Hello {{loggedInUser.nameEmployer}}</h1>
-
-<div>
-  
-  <div class="employerData">
-    <p>Name: {{loggedInUser.nameEmployer}}</p>
-    <p>Location: {{loggedInUser.location}}</p>
-    <p>Email: {{loggedInUser.emailEmployer}}</p>
-    <p>Adress: {{loggedInUser.adress}}</p>
+<div class="media">
+ <a href="/loginEmployer" ><img src="/images/arrow1.png"  alt="backtomain" class="backArrow"></a>
+ <a href='/logout' ><img src="/images/logout.png" class="logOutIcon"></a>
+  <div class="media-body">
+    <a href="/" ><img src="/images/iconS/brand1.png" alt="logo-Jobber" class="mr-3" id="brandIcon1"></a>
+    <br></br>
+  <div id="headings"><h2 class="mt-0">COMPANY PROFILE</h2></div>
   </div>
-
-  <a href="/employerProfile/{{result._id}}edit">
-    <button type="submit" class="btn btn-primary">Edit</button>
-</a>
 </div>
-
-<div class="bio">
-  {{loggedInUser.info}}
+<br></br>
+<h3> Welcome to your profile {{loggedInUser.nameEmployer}}</h3>
+<br></br>
+<div class="btnsProfileLinks">
+   <button  id="btns" class="btn btn-primary" onclick="window.location.href='/employerProfile/hiringPropositions';" >HIRE PROPOSAL</a></button>
+   <button  id="btns" class="btn btn-primary" onclick="window.location.href='/employerProfile/recruit';">SEARCH CANDIDATE</a></button>
 </div>
-
+<br></br>
 <div>
-  <h3>Keywords</h3>
+  <div class="employerData">
+      <h5 class="mt-0" style="text-align: center;">YOUR PROFILE DETAILS</h5>
+      <br></br>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployer}} &nbsp; &nbsp;
+      <strong>Location: </strong> {{loggedInUser.location}} &nbsp; &nbsp;  
+      </li>
+      <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployer}}   &nbsp; &nbsp;
+      <strong>Adress: </strong> {{loggedInUser.adress}}</li>
+      <li class="list-group-item"><strong>Info: </strong>{{loggedInUser.info}}</li>
+    </ul>
+  </div>
+  <div style="text-align: end;">
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/employerProfile/edit';" id="btns">EDIT</button>
+    </div>
 </div>
+

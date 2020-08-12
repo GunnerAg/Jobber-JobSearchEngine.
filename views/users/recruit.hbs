@@ -1,1 +1,64 @@
-<h1>This is the recruit page</h1>
+<div class="media">
+ <a href="/employerProfile"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
+  <div class="media-body">
+    <a href="/"><img src="/images/iconS/brand1.png" class="mr-3" alt="logo-Jobber" id="brandIcon1"></a>
+           <br></br>
+      <div id="headings"> <h2 class="mt-0">SEARCH FOR TALENT</h2></div>
+</div>
+</div>
+<br></br>
+
+{{!-- ------------------------------FORM KEYWORDS----------------------------------------------- --}}
+
+
+
+
+<form method="POST" action="/employerProfile/recruit">
+<div style="display:flex; justify-content: center;">
+<button type="submit" class="btn btn-primary" id="btns">SEARCH</button>
+</div>
+<div class="container">
+  <div class="row">
+   {{! -- SOME SUPER CRAZY CODE --}}
+    <div class="col">
+      <h3><strong>BACKEND</strong></h3>
+      {{#each data.backend}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this}}" value="{{this}}" >
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this}}.jpg" class = "img" alt="img" > {{this}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <div class="col">
+      <h3><strong>FRONTEND</strong></h3>
+      {{#each data.frontend}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this}}" value="{{this}}" >
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this}}.jpg" class = "img" alt="img" > {{this}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <br></br>
+    <div class="w-100"></div>
+    <div class="col">
+      <h3><strong>DEVOPS</strong></h3>
+      {{#each data.devops}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this}}" value="{{this}}" >
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this}}.jpg" class = "img" alt="img" > {{this}}</label>
+      </div>
+      {{/each}}
+    </div>
+    <br></br>
+    <div class="col">
+      <h3><strong>DATA ANALYTICS</strong></h3>
+      {{#each data.data}}
+       <div class="form-check form-check-inline">
+        <input class="form-check-input" name = "keywords" type="checkbox" id="{{this}}" value="{{this}}" >
+        <label class="form-check-label" for="inlineCheckbox1"><img src="/images/logos/{{this}}.jpg" class = "img" alt="img" > {{this}}</label>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+</form>
