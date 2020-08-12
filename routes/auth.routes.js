@@ -138,7 +138,8 @@ console.log(req.body)
   }
   
   employeeModel.findOne({emailEmployee})
-      .then((employeeData) => {         
+      .then((employeeData) => {  
+        if(!employeeData){res.status(500).render('auth/loginEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}       
           let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
           if (doesItMatch){
               req.session.loggedInUser = employeeData 
@@ -182,7 +183,8 @@ console.log(req.body)
   }
   
   employerModel.findOne({emailEmployer})
-      .then((employerData) => {         
+      .then((employerData) => {    
+          if(!employerData){res.status(500).render('auth/loginEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}
           let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
           if (doesItMatch){
               req.session.loggedInUser = employerData 
