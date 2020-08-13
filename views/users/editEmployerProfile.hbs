@@ -25,15 +25,20 @@
 
   <div class="form-group">
     <label for="adress"> <strong>Adress</strong></label>
-    <input name="adress" type="text" class="form-control" id="adress" value="{{loggedInUser.adress}}">
+    <input name="adress" type="text" class="form-control" id="adress" placeholder="please enter your adress" value="{{loggedInUser.adress}}">
   </div>
 
   <div class="form-group">
     <label for="info"> <strong>Info</strong></label>
-    <input name="info" type="text" class="form-control" id="info" value="{{loggedInUser.info}}">
+    <input name="info" type="text" class="form-control" id="info" placeholder="please enter info about your company" value="{{loggedInUser.info}}">
   </div>
   
   <button type="submit" class="btn btn-primary" id="btns">EDIT</button>
 </form>
+
+<form method="GET" action="/employerProfile/delete">
+ <button type="submit" class="btn btn-primary" id="btns"><strong>DELETE PROFILE</strong></button>
+ </form>
+
 
 

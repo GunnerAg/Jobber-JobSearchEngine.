@@ -4,7 +4,7 @@
     <a href="/" class="mr-3"><img src="/images/icons/brand1.png" alt="logo-Jobber" id="brandIcon1"></a>
         <br></br>
    <div id="headings"> <h2 class="mt-0">LOGIN AS EMPLOYEE</h2></div>
-    Dont have an account yet? <a href="/singupEmployee">Sign Up Here!</a>
+    Dont have an account yet? <a href="/signupEmployee">Sign Up Here!</a>
     </div>
   </div>
 
@@ -23,7 +23,8 @@
   <button type="submit" class="btn btn-primary" id="btns">LOGIN</button>
 </form>
 
-
+<div class="errorMsgCenter">
 {{#if errorMessage}}
 <div class="errMsg">{{errorMessage}}</div>
 {{/if}}
+</div>

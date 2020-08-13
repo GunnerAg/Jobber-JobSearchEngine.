@@ -33,11 +33,14 @@ router.get('/loginEmployer', (req, res, next) => {
   res.render('auth/loginEmployer');
 });
 //----------------------------------------//
-router.get('/singupEmployee', (req, res, next) => {
-  res.render('auth/singupEmployee');
+router.get('/signupEmployee', (req, res, next) => {
+  res.render('auth/signupEmployee');
 });
 
-router.get('/singupEmployer', (req, res, next) => {
-  res.render('auth/singupEmployer');
+router.get('/signupEmployer', (req, res, next) => {
+  res.render('auth/signupEmployer');
 });
+
+
+  
 module.exports = router;

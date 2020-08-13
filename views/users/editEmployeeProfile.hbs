@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <label for="biography"><strong>Bio</strong></label>
-    <input name="biography" type="text" class="form-control" id="biography" value="{{loggedInUser.biography}}">
+    <input name="biography" type="text" class="form-control" id="biography" placeholder="please tell us about you" value="{{loggedInUser.biography}}">
   </div>
 
   <div class="form-group">
@@ -41,9 +41,15 @@
 
   <div class="form-group">
     <label for="adressEmployee"><strong>Adress</strong></label>
-    <input name="adressEmployee" type="text" class="form-control" id="adressEmployee" value="{{loggedInUser.adressEmployee}}">
+    <input name="adressEmployee" type="text" class="form-control" id="adressEmployee" placeholder="please enter your adress" value="{{loggedInUser.adressEmployee}}">
   </div>
   
   <button type="submit" class="btn btn-primary" id="btns"><strong>EDIT</strong></button>
 </form>
+
+<form method="GET" action="/employeeProfile/delete">
+ <button type="submit" class="btn btn-primary" id="btns"><strong>DELETE PROFILE</strong></button>
+ </form>
+
+
 

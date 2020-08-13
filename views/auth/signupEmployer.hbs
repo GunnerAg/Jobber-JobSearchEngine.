@@ -8,7 +8,7 @@
   </div>
 
 </div>
-<form method="POST" action="/singupEmployer">
+<form method="POST" action="/signupEmployer">
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="nameEmployer" class="form-label">Company / employer name</label>
@@ -30,12 +30,14 @@
     </div>
   </div>
   <div class="form-group">
-        By singing up you agree the <a href="/termsAndConditions">terms and conditions</a> 
+        By signing up you agree the <a href="/termsAndConditions">terms and conditions</a> 
     </div>
   </div>
   <button class="btn btn-primary" type="submit" id="btns">SIGN UP</button>
 </form>
 
+<div class="errorMsgCenter">
 {{#if errorMessage}}
 <div class="errMsg">{{errorMessage}}</div>
 {{/if}}
+</div>

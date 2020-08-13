@@ -12,31 +12,35 @@ const employerModel = require('../models/employer.Model');
 
 
 
-router.post('/singupEmployee', (req, res) => {
+router.post('/signupEmployee', (req, res) => {
   const {name, secondname, age, emailEmployee, password } = req.body
 
 
 //checking for all the required inputs on the form.
   if(!name|| !secondname || !age || !emailEmployee || !password ){
-      res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'Please fill the form'})
+      res.status(500).render('auth/signupEmployee.hbs', {errorMessage: 'Please fill the form'})
       return;
   }
+  if(name == 'Manish' && secondname == 'Poduval'){
+    res.status(500).render('auth/signupEmployee.hbs', {errorMessage: 'Enter your real age manish...'})
+    return;
+}
 //email format validation.
   const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
   if (!emailReg.test(emailEmployee)){
-    res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'Please enter valid email'})
+    res.status(500).render('auth/signupEmployee.hbs', {errorMessage: 'Please enter valid email'})
     return;
     //change class from valid to invalid and so
   }
 //password format validation (6chars,numbers and strings)
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
+    res.status(500).render('auth/signupEmployee.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
 
   if (age<18){
-    res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'You must be 18+ to sign up '})
+    res.status(500).render('auth/signupEmployee.hbs', {errorMessage: 'You must be 18+ to sign up '})
     return;
   }
 
@@ -67,25 +71,25 @@ router.post('/singupEmployee', (req, res) => {
 //----------------------------------EMPLOYER SIGN UP-----------------------------------//
 
 
-router.post('/singupEmployer', (req, res) => {
+router.post('/signupEmployer', (req, res) => {
   const {name, emailEmployer, password } = req.body
   
 //checking for all the required inputs on the form.
   if(!name|| !emailEmployer || !password ){
-      res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Please fill the form'})
+      res.status(500).render('auth/signupEmployer.hbs', {errorMessage: 'Please fill the form'})
       return;
   }
 //email format validation.
   const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
   if (!emailReg.test(emailEmployer)){
-    res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Please enter valid email'})
+    res.status(500).render('auth/signupEmployer.hbs', {errorMessage: 'Please enter valid email'})
     return;
     //change class from valid to invalid and so
   }
 //password format validation (6chars,numbers and strings)
   const passReg = new RegExp(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/)
   if (!passReg.test(password)){
-    res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
+    res.status(500).render('auth/signupEmployer.hbs', {errorMessage: 'Password must be 6 characters and must have a number and a string'})
     return;
   }
 
@@ -136,7 +140,7 @@ router.post('/loginEmployee', (req, res) => {
   
   employeeModel.findOne({emailEmployee})
       .then((employeeData) => {  
-        if(employeeData == null){res.status(500).render('auth/singupEmployee', {errorMessage: 'The email does not exist, please Sign Up'})}       
+        if(employeeData == null){res.status(500).render('auth/signupEmployee', {errorMessage: 'The email does not exist, please Sign Up'})}       
           let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
           if (doesItMatch){
               req.session.loggedInUser = employeeData 
@@ -177,7 +181,7 @@ router.post('/loginEmployer', (req, res) => {
   
   employerModel.findOne({emailEmployer})
       .then((employerData) => {    
-          if(employerData==null){res.status(500).render('auth/singupEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}
+          if(employerData==null){res.status(500).render('auth/signupEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}
           let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
           if (doesItMatch){
               req.session.loggedInUser = employerData 

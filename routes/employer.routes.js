@@ -24,9 +24,6 @@ router.get('/employerProfile', (req, res) => {
 
 
 
-
-
-
 //-----------------------------EMPLOYEE EDIT PROFILE-------------------------------//
 ///-------GET------///
 router.get('/employerProfile/edit', (req, res, next) => {
@@ -51,8 +48,18 @@ router.post('/employerProfile/edit', (req, res, next) =>{
     })
 })
 
+ //------------------------------delete profile-------------------//
+ router.get('/employerProfile/delete', (req, res, next) => {
+  res.render('users/deleteEmployer')
+})
 
-
+router.post('/deleteEmployer', (req, res, next) =>{
+  employerModel.findByIdAndDelete(req.session.loggedInUser._id)
+   .then(()=>{
+     req.session.destroy();
+     res.redirect('/')
+   })
+})
 
 
 

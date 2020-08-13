@@ -49,8 +49,6 @@ router.get('/employeeProfile/edit', (req, res, next) => {
     res.render('users/editEmployeeProfile',{loggedInUser})
   })
   })
-
-
 ///-------POST------///
   router.post('/employeeProfile/edit',  uploader.single("imageUrl"), (req, res, next) =>{
     let myObj = {...req.body}
@@ -72,6 +70,21 @@ router.get('/employeeProfile/edit', (req, res, next) => {
   })
 
 
+
+  //------------------------------delete profile-------------------//
+  
+  router.get('/employeeProfile/delete', (req, res, next) => {
+    res.render('users/deleteEmployee')
+  })
+
+  router.post('/deleteEmployee', (req, res, next) =>{
+    employeeModel.findByIdAndDelete(req.session.loggedInUser._id)
+     .then(()=>{
+       req.session.destroy();
+       res.redirect('/')
+     })
+  })
+ 
 
 //-----------------------------EMPLOYEE ADD KEYWORDS-------------------------------//
 ///-------POST------///
