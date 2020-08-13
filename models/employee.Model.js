@@ -11,7 +11,7 @@ for (let key in data ){
 const employeeSchema = new Schema({
     imageEmployee:{
       type: String,
-      default: 'https://res.cloudinary.com/dzzpwrdae/image/upload/v1597312251/n3vbei6rbel2oqpauox4.png',
+      default: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
     },
     /*Define schema here */
     nameEmployee: {
