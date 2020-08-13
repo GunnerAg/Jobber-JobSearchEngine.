@@ -7,13 +7,15 @@
 </div>
 </div>
 <br></br>
-
+<div class="centered">
 <h5>write your offer to {{#each result}} {{this.nameEmployee}}{{/each}} bellow. </h5>
-
-
+</div>
+<div class="centered"></div>
 <form method="POST" action="/employerProfile/offer/{{result._id}}">
- <div class="form-group">
     <textarea name="offerMessage"class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-  </div>
+  <div class="centered">
   <button type="submit" class="btn btn-primary" id="btns" >SEND OFFER</button>
+  </div>
+  <div class="centered"></div>
 </form>
+

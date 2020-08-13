@@ -57,3 +57,5 @@ const employeeSchema = new Schema({
 );
 let employeeModel = model('Employee', employeeSchema);
  module.exports = employeeModel
+
+ 

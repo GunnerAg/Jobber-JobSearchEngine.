@@ -9,17 +9,23 @@
 <br></br>
 {{#each offerData}}
 <h4 style="text-align: center;">JOB OFFER</h4>
+<div class="wrapper-signup">
 <ul class="list-group">
 <form method = "POST" action="/employerProfile/hiringPropositions/{{this._id}}/delete">
 <li class="list-group-item"> <strong>Offer sent to: </strong>{{this.employeeId.nameEmployee}} {{this.employeeId.secondnameEmployee}}</li>
 <li class="list-group-item"><strong>Status: </strong> {{this.status}}</li>
-<li class="list-group-item"><strong>Message: </strong><br><br>{{this.offerMessage}}</li>
+<li class="list-group-item" ><strong>Message: </strong><br><br>{{this.offerMessage}}</li>
 {{#if this.isAccepted}}
 <li class="list-group-item"><strong>Email: </strong>{{this.employeeId.emailEmployee}}</li>
+</div>
 {{else}}
-<li class="list-group-item"><button type="submit" class="btn btn-primary" id="btns">DELETE OFFER</button></li>
+
+<div class="centered">
+<button type="submit" class="btn btn-primary" id="btns">DELETE OFFER</button>
+</div>
 {{/if}}
-</ul></form>
+</ul>
+</form>
 <hr>
 <br></br>
 {{/each}}

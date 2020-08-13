@@ -7,11 +7,12 @@
 </div>
 </div>
  <form method="POST" action="/employeeProfile/edit" enctype="multipart/form-data">
-
-
-  <div class="form-group">
-    <label for="imageEmployee"><strong>Upload your image</strong></label> <br></br>
-    <input name="imageUrl" type="file" id="imageEmployee" value="{{loggedInUser.imageEmployee}}">
+  <div class="wrapper-signup">
+  <div class="form-group" style="justify-content: center;">
+    <div class="btn btn-primary" id="btns" >
+    <label for="imageEmployee"><strong>Upload your image</strong></label> 
+    <input name="imageUrl" type="file" id="imageEmployee" class="btns" value="{{loggedInUser.imageEmployee}}">
+   </div>
   </div>
 
   <div class="form-group">
@@ -45,11 +46,12 @@
   </div>
   
   <button type="submit" class="btn btn-primary" id="btns"><strong>EDIT</strong></button>
+  </div>
 </form>
 
 <form method="GET" action="/employeeProfile/delete">
+ <div class="wrapper-signup">
  <button type="submit" class="btn btn-primary" id="btns"><strong>DELETE PROFILE</strong></button>
+ </div>
  </form>
-
-
 

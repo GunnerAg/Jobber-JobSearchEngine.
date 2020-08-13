@@ -16,17 +16,20 @@
    {{#if this.hasAdress}}
       <strong>Adress: </strong>{{this.adressEmployee}}</li>
       {{/if }}
-      <li class="list-group-item"><strong>Skillset: </strong>{{this.keywords}} </li>
+      <li class="list-group-item" id="resultRec"><strong>Skillset: </strong>{{this.keywords}} </li>
    </ul>
 
+   <div class="centered">
    {{#if this.match}}
     <button type="button" disabled="true" class="btn btn-primary" id="btns">OFFER SENT</button>
     {{else}}
-    <button type="button" class="btn btn-primary" id="btns"><a href="/employerProfile/offer/{{this._id}}" id="hyplink">SEND OFFER</a></button>
+    <button type="button" class="btn btn-primary" id="btns" onclick="window.location.href='/employerProfile/offer/{{this._id}}';" id="hyplink" >SEND OFFER</button>
    {{/if}}
+   </div>
 <hr>
 <br></br>
 {{/each}}
+
 
 
 {{#if errorMessage}}

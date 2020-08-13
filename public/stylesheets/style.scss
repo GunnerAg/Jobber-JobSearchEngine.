@@ -145,7 +145,6 @@ label{
   text-align: center;
   border: black solid 2px;
   border-radius: 5px;
-
   
 }
 .footer {
@@ -226,7 +225,7 @@ label{
 .btnsProfileLinks{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .logOutIcon{
   position: absolute;
@@ -279,7 +278,7 @@ h3{
 
 .deleteBtns{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-direction: row;
 }
 .leaveGif{
@@ -287,3 +286,47 @@ h3{
   display: flex;
   justify-content: center;
 }
+.tacLink{
+  color: inherit;
+  text-decoration: underline;
+}
+.form-row{
+  width: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px
+}
+.form-group{
+  width: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px
+}
+.wrapper-signup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#imageEmployee{
+  display: none;
+}
+.employerData{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#resultRec{
+  word-wrap: break-word;
+}
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+

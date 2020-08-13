@@ -6,15 +6,17 @@
       <div id="headings"><h2 class="mt-0">EMPLOYEE SIGN UP</h2></div>
     Please fill the form bellow.
   </div>
-
 </div>
+
 <form method="POST" action="/signupEmployee">
-  <div class="form-row">
+  <div class="wrapper-signup">
+    <div class="form-row">
+
     <div class="col-md-6 mb-3">
       <label for="nameEmployee" class="form-label">First name</label>
       <input type="text" name="name" class="form-control" id="nameEmployee" placeholder="Enter First name" >
-      
     </div>
+
     <div class="col-md-6 mb-3">
       <label for="secondnameEmployee" class="form-label">Last name</label>
       <input type="text" name="secondname" class="form-control" id="secondnameEmployee" placeholder="Enter Last Name" >
@@ -44,11 +46,13 @@
     </div>
     </div>
   </div>
-  <div class="form-group">
-        By signing up you agree the <a href="/termsAndConditions">terms and conditions</a> 
+    <div class="form-group">
+        By signing up you agree the&nbsp;<a href="/termsAndConditions" class="tacLink"><strong>terms and conditions</strong></a> 
     </div>
+     <button class="btn btn-primary" type="submit" id="btns">SIGN UP</button>
   </div>
-  <button class="btn btn-primary" type="submit" id="btns">SIGN UP</button>
+ 
+  
 </form>
 
 <div class="errorMsgCenter">

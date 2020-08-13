@@ -7,7 +7,7 @@
 </div>
 </div>
 <form method="POST" action="/employerProfile/edit" >
-
+<div class="wrapper-signup">
   <div class="form-group">
     <label for="nameEmployer"><strong>Name</strong></label>
     <input name="nameEmployer" type="text" class="form-control" id="nameEmployer" value="{{loggedInUser.nameEmployer}}">
@@ -34,10 +34,13 @@
   </div>
   
   <button type="submit" class="btn btn-primary" id="btns">EDIT</button>
+  </div>
 </form>
 
+<div class="wrapper-signup">
 <form method="GET" action="/employerProfile/delete">
  <button type="submit" class="btn btn-primary" id="btns"><strong>DELETE PROFILE</strong></button>
+ </div>
  </form>
 
 
