@@ -6,19 +6,25 @@
    <h2 class="mt-0">EDIT PROFILE</h2>
 </div>
 </div>
- <form method="POST" action="/employeeProfile/edit" >
+ <form method="POST" action="/employeeProfile/edit" enctype="multipart/form-data">
 
- <div class="form-group">
+
+  <div class="form-group">
+    <label for="imageEmployee"><strong>Upload your image</strong></label> <br></br>
+    <input name="imageUrl" type="file" id="imageEmployee" value="{{loggedInUser.imageEmployee}}">
+  </div>
+
+  <div class="form-group">
     <label for="nameEmployee"><strong>Name</strong></label>
     <input name="nameEmployee" type="text" class="form-control" id="nameEmployee" value="{{loggedInUser.nameEmployee}}">
   </div>
-
+ 
   <div class="form-group">
     <label for="secondnameEmployee"><strong>Second Name</strong></label>
     <input name="secondnameEmployee" type="text" class="form-control" id="secondnameEmployee" value="{{loggedInUser.secondnameEmployee}}">
   </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="age"><strong>Age</strong></label>
     <input name="age" type="number" class="form-control" id="age"  value="{{loggedInUser.age}}">
   </div>

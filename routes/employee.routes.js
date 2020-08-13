@@ -5,6 +5,9 @@ const employerModel = require('../models/employer.Model');
 const offerModel = require('../models/offer.Model');
 const data = require('../bin/data');
 
+//------REQUIRING CLOUDINARY
+const uploader = require('../config/cloudinary.config.js');
+
 
 router.get('/employeeProfile', (req, res, next)=>{
   if (req.session.loggedInUser && req.session.loggedInUser.type === 'employee' ){
@@ -20,7 +23,6 @@ router.get('/employeeProfile', (req, res, next)=>{
 router.get('/employeeProfile', (req, res) => {
   employeeModel.findById(req.session.loggedInUser._id)
   .then((match) => {
-      
       let newData = {}
       for (let key in data) {
         newData[key] = []
@@ -31,7 +33,6 @@ router.get('/employeeProfile', (req, res) => {
           })
         })
       }
-      console.log(newData)
       res.render('users/employeeProfile.hbs', {loggedInUser: req.session.loggedInUser, data: newData})
   })
   
@@ -51,10 +52,12 @@ router.get('/employeeProfile/edit', (req, res, next) => {
 
 
 ///-------POST------///
-  router.post('/employeeProfile/edit', (req, res, next) =>{
-    let {nameEmployee, secondnameEmployee, biography, age, emailEmployee, adressEmployee } = req.body
-    console.log(req.session.loggedInUser)
-    employeeModel.findByIdAndUpdate(req.session.loggedInUser._id, {$set:{nameEmployee, secondnameEmployee, biography, age, emailEmployee, adressEmployee}})
+  router.post('/employeeProfile/edit',  uploader.single("imageUrl"), (req, res, next) =>{
+    let myObj = {...req.body}
+    if (req.file){
+      myObj.imageEmployee = req.file.path
+    }
+    employeeModel.findByIdAndUpdate(req.session.loggedInUser._id, {$set: myObj })
       .then(()=>{
         employeeModel.findById(req.session.loggedInUser._id)
           .then((loggedInUser) => {
@@ -74,7 +77,6 @@ router.get('/employeeProfile/edit', (req, res, next) => {
 ///-------POST------///
 router.post('/employeeProfile', (req, res, next) =>{
   let {keywords} = req.body
-
   employeeModel.findByIdAndUpdate(req.session.loggedInUser._id, {$set:{ keywords}})
     .then(()=>{
       employeeModel.findById(req.session.loggedInUser._id)
@@ -100,14 +102,15 @@ router.get('/employeeProfile/jobPropositions', (req, res, next) => {
   offerModel.find({employeeId:req.session.loggedInUser._id})
   .populate('companyId')
     .then((offerData) => {
-      //console.log(offerData)
-      offerData = offerData.map((myObj) => {
+      let result = JSON.parse(JSON.stringify(offerData)).map((myObj) => {
+        myObj.hasAdress = !!myObj.companyId.adress
+        myObj.hasEmployees = !!myObj.companyId.NumbOfEmployees
         myObj.isNotPending = myObj.status !== 'PENDING'
         myObj.isAccepted = myObj.status == 'ACCEPTED'
         myObj.isRejected = myObj.status == 'REJECTED'
         return myObj
       })
-       res.render('users/jobPropositions', {offerData});
+       res.render('users/jobPropositions', {offerData: result});
     })
 })
 

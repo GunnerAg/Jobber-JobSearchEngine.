@@ -38,13 +38,10 @@ router.get('/employerProfile/edit', (req, res, next) => {
 
 ///-------POST------///
 router.post('/employerProfile/edit', (req, res, next) =>{
-  let {nameEmployer, location, info, emailEmployer, adress} = req.body
-  console.log(req.session.loggedInUser)
-  employerModel.findByIdAndUpdate(req.session.loggedInUser._id, {$set:{nameEmployer, location, info, emailEmployer, adress}})
+  employerModel.findByIdAndUpdate(req.session.loggedInUser._id, {$set:req.body})
     .then(()=>{
       employerModel.findById(req.session.loggedInUser._id)
         .then((loggedInUser) => {
-          console.log(loggedInUser)
           req.session.loggedInUser=loggedInUser
           res.redirect('/employerProfile')
         })
@@ -82,18 +79,21 @@ router.post('/employerProfile/recruit', (req, res, next) => {
   let {keywords} = req.body
   employeeModel.find({'keywords': { $in: keywords }})
   .then((employeeData)=>{
+    //---------------------//
+     let result = JSON.parse(JSON.stringify(employeeData)).map((myObj) => {
+      myObj.hasAdress = !!myObj.adressEmployee
+     
+      return myObj
+    })
+    //--------------------------------**
     offerModel.find({companyId: req.session.loggedInUser._id})
     .then((offerData)=>{
-      const newEmployeeData = JSON.parse(JSON.stringify(employeeData))
+      const newEmployeeData = JSON.parse(JSON.stringify(result))
       offerData.forEach(e => newEmployeeData.forEach(e2 => {
-        console.log(e.employeeId, e2._id)
-        console.log(e.employeeId === e2._id)
         if (e.employeeId.toString() === e2._id.toString()) {
-          console.log("it's a match")
           e2.match = true
         }
       }))
-      console.log(newEmployeeData)
       res.render('users/recruitResults', {employeeData: newEmployeeData})
     })
    
@@ -164,9 +164,7 @@ router.post('/employerProfile/hiringPropositions/:id/delete',(req, res, next)=>{
   offerModel.findOne({_id:req.params.id})
     .populate('employeeId')
     .then((offerData)=>{
-      console.log(offerData)
       if(offerData.status=='PENDING'|| offerData.status=='REJECTED' ){
-        console.log('Inside delete if')
         offerModel.findByIdAndDelete(offerData._id)
           .then(()=>{
             res.redirect('/employerProfile/hiringPropositions')

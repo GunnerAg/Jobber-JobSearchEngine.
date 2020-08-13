@@ -11,8 +11,7 @@ const path         = require('path');
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Jobber'
 
-mongoose
-  .connect(`${MONGODB_URI}`, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(`${MONGODB_URI}`, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -84,18 +83,6 @@ app.use('/', employeeRouter);
 
 const employerRouter = require('./routes/employer.routes');
 app.use('/', employerRouter);
-
-// const userRouter = require('./routes/users.routes');
-// app.use('/', userRouter);
-
-// if (req.session.loggedInUser && req.session.loggedInUser.type === 'employee' ){
-//   const employeeRouter = require('./routes/employee.routes');
-// app.use('/', employeeRouter);
-// }
-// if (req.session.loggedInUser && req.session.loggedInUser.type === 'employer'  ){
-//   const employerRouter = require('./routes/employer.routes');
-// app.use('/', employerRouter);
-// }
 
 
 

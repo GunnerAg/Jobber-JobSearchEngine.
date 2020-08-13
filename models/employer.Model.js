@@ -6,13 +6,11 @@ const employerSchema = new Schema({
       type: String, 
       required: true
     },  
-    location: {
-      type: String,
-    
+    NumbOfEmployees: {
+      type: Number,
     },
     adress: {
       type: String, 
-      
     },
     emailEmployer: {
       type: String,

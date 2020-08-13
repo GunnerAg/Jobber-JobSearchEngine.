@@ -5,21 +5,6 @@ const employeeModel = require('../models/employee.Model');
 const employerModel = require('../models/employer.Model');
 
 
-// router.get('/loginEmployee', (req, res, next) => {
-//   res.render('auth/loginEmployee');
-// });
-
-// router.get('/loginEmployer', (req, res, next) => {
-//   res.render('auth/loginEmployer');
-// });
-// //----------------------------------------//
-// router.get('/singupEmployee', (req, res, next) => {
-//   res.render('auth/singupEmployee');
-// });
-
-// router.get('/singupEmployer', (req, res, next) => {
-//   res.render('auth/singupEmployer');
-// });
 
 
 
@@ -28,16 +13,17 @@ const employerModel = require('../models/employer.Model');
 
 
 router.post('/singupEmployee', (req, res) => {
-  const {name, secondname, age, email, password } = req.body
-  console.log(req.body)
+  const {name, secondname, age, emailEmployee, password } = req.body
+
+
 //checking for all the required inputs on the form.
-  if(!name|| !secondname || !age || !email || !password ){
+  if(!name|| !secondname || !age || !emailEmployee || !password ){
       res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'Please fill the form'})
       return;
   }
 //email format validation.
   const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
-  if (!emailReg.test(email)){
+  if (!emailReg.test(emailEmployee)){
     res.status(500).render('auth/singupEmployee.hbs', {errorMessage: 'Please enter valid email'})
     return;
     //change class from valid to invalid and so
@@ -54,18 +40,26 @@ router.post('/singupEmployee', (req, res) => {
     return;
   }
 
-  bcryptjs.genSalt(10)
-    .then((salt) => {
-        bcryptjs.hash(password , salt)
-          .then((hashPass) => {
-              console.log(hashPass)
-              // create that user in the db
-              employeeModel.create({nameEmployee: name, secondnameEmployee: secondname, age, emailEmployee: email, passwordHashEmployee: hashPass }) // nameEmployee: name
-                .then(() => {
-                    res.redirect('/')
-                })
-          })
-    })
+
+
+  //check if user exist with the same email
+   employeeModel.findOne({emailEmployee})
+   .then((employeeData) => { 
+     if(employeeData){res.status(500).render('auth/loginEmployee', {errorMessage: 'You already have an account, please Log In'})}
+     else{
+     bcryptjs.genSalt(10)
+     .then((salt) => {
+         bcryptjs.hash(password , salt)
+           .then((hashPass) => {
+               // create that user in the db
+               employeeModel.create({nameEmployee: name, secondnameEmployee: secondname, age, emailEmployee, passwordHashEmployee: hashPass }) // nameEmployee: name
+                 .then(() => {
+                     res.redirect('/')
+                 })
+           })
+      })
+    }
+  })
 })
 
 
@@ -74,16 +68,16 @@ router.post('/singupEmployee', (req, res) => {
 
 
 router.post('/singupEmployer', (req, res) => {
-  const {name, email, password } = req.body
-  console.log(req.body)
+  const {name, emailEmployer, password } = req.body
+  
 //checking for all the required inputs on the form.
-  if(!name|| !email || !password ){
+  if(!name|| !emailEmployer || !password ){
       res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Please fill the form'})
       return;
   }
 //email format validation.
   const emailReg = new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
-  if (!emailReg.test(email)){
+  if (!emailReg.test(emailEmployer)){
     res.status(500).render('auth/singupEmployer.hbs', {errorMessage: 'Please enter valid email'})
     return;
     //change class from valid to invalid and so
@@ -95,13 +89,17 @@ router.post('/singupEmployer', (req, res) => {
     return;
   }
 
+  //check if user exist with the same email
+  employerModel.findOne({emailEmployer})
+  .then((employerData) => {  
+    if(employerData !== null){res.status(500).render('auth/loginEmployer', {errorMessage: 'You already have an account, please Log In'})}
+  })
   bcryptjs.genSalt(10)
     .then((salt) => {
         bcryptjs.hash(password , salt)
           .then((hashPass) => {
-              console.log(hashPass)
               // create that user in the db
-              employerModel.create({nameEmployer:name, emailEmployer:email, passwordHashEmployer: hashPass })
+              employerModel.create({nameEmployer:name, emailEmployer, passwordHashEmployer: hashPass })
                 .then(() => {
                     res.redirect('/')
                 })
@@ -119,7 +117,6 @@ router.post('/singupEmployer', (req, res) => {
 
 router.post('/loginEmployee', (req, res) => {
   const { emailEmployee, password} = req.body
-console.log(req.body)
   if( !emailEmployee || !password){
       res.status(500).render('auth/loginEmployee', {errorMessage: 'Please enter all details'})
       return;
@@ -139,7 +136,7 @@ console.log(req.body)
   
   employeeModel.findOne({emailEmployee})
       .then((employeeData) => {  
-        if(!employeeData){res.status(500).render('auth/loginEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}       
+        if(employeeData == null){res.status(500).render('auth/singupEmployee', {errorMessage: 'The email does not exist, please Sign Up'})}       
           let doesItMatch = bcryptjs.compareSync(password, employeeData.passwordHashEmployee); 
           if (doesItMatch){
               req.session.loggedInUser = employeeData 
@@ -155,16 +152,12 @@ console.log(req.body)
 })
 
 
-//-------------------------ONCE LOGGED IN EMPLOYEE-------------------------------//
-// router.get('/employeeProfile', (req, res) => {
-//   res.render('users/employeeProfile.hbs', {loggedInUser: req.session.loggedInUser})
-// })
+
 //----------------------------------EMPLOYER LOG IN-----------------------------------//
 
 
 router.post('/loginEmployer', (req, res) => {
   const { emailEmployer, password} = req.body
-console.log(req.body)
   if( !emailEmployer || !password){
       res.status(500).render('auth/loginEmployer', {errorMessage: 'Please enter all details'})
       return;
@@ -184,7 +177,7 @@ console.log(req.body)
   
   employerModel.findOne({emailEmployer})
       .then((employerData) => {    
-          if(!employerData){res.status(500).render('auth/loginEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}
+          if(employerData==null){res.status(500).render('auth/singupEmployer', {errorMessage: 'The email does not exist, please Sign Up'})}
           let doesItMatch = bcryptjs.compareSync(password, employerData.passwordHashEmployer); 
           if (doesItMatch){
               req.session.loggedInUser = employerData 
@@ -199,10 +192,6 @@ console.log(req.body)
       })
 })
 
-//-------------------------ONCE LOGGED IN EMPLOYER-------------------------------//
-// router.get('/employerProfile', (req, res) => {
-//   res.render('users/employerProfile.hbs', {loggedInUser: req.session.loggedInUser})
-// })
 
 
 //--------------------LOGOUT SESSION----------------------------//

@@ -10,8 +10,13 @@
 
 {{#each employeeData}}
    <ul class="list-group">
-      <li class="list-group-item"><strong>Name: </strong>{{this.nameEmployee}} </li>
-      <li class="list-group-item"><strong>Skills: </strong>{{this.keywords}} </li>
+      <li class="list-group-item">
+      <strong>Name: </strong>{{this.nameEmployee}} {{this.secondnameEmployee}} <br></br> 
+      <strong>Age: </strong>{{this.age}}  <br></br> 
+   {{#if this.hasAdress}}
+      <strong>Adress: </strong>{{this.adressEmployee}}</li>
+      {{/if }}
+      <li class="list-group-item"><strong>Skillset: </strong>{{this.keywords}} </li>
    </ul>
 
    {{#if this.match}}
@@ -19,7 +24,6 @@
     {{else}}
     <button type="button" class="btn btn-primary" id="btns"><a href="/employerProfile/offer/{{this._id}}" id="hyplink">SEND OFFER</a></button>
    {{/if}}
-    
 <hr>
 <br></br>
 {{/each}}
@@ -29,8 +33,6 @@
 {{errorMessage}}
 {{/if}}
 
-
-<br></br>
 
 
 

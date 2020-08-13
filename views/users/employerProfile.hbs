@@ -21,14 +21,14 @@
       <br></br>
     <ul class="list-group">
       <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployer}} &nbsp; &nbsp;
-      <strong>Location: </strong> {{loggedInUser.location}} &nbsp; &nbsp;  
+      <strong>Number of employees: </strong> {{loggedInUser.NumbOfEmployees}} {{#unless loggedInUser.NumbOfEmployees }} Please enter Number of Employess {{/unless}}&nbsp; &nbsp;  
       </li>
       <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployer}}   &nbsp; &nbsp;
-      <strong>Adress: </strong> {{loggedInUser.adress}}</li>
-      <li class="list-group-item"><strong>Info: </strong>{{loggedInUser.info}}</li>
+      <strong>Adress: </strong> {{loggedInUser.adress}} {{#unless loggedInUser.adress }} Please enter an adress{{/unless}}</li>
+      <li class="list-group-item"><strong>Info: </strong>{{loggedInUser.info}} {{#unless loggedInUser.adress }}Please enter your company info{{/unless}}</li>
     </ul>
   </div>
-  <div style="text-align: end;">
+  <div style="text-align: center;">
     <button type="submit" class="btn btn-primary" onclick="window.location.href='/employerProfile/edit';" id="btns">EDIT</button>
     </div>
 </div>

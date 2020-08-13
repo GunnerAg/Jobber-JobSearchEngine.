@@ -246,3 +246,29 @@ h3{
   word-wrap: break-word;
 
 }
+
+@media (max-width: 620px) {
+  .profilePic{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 150px
+  }
+}
+
+@media (min-width: 620px) and (max-width: 999px) {
+  .profilePic{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 250px
+  }
+}
+@media (min-width: 1000px) {
+  .profilePic{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 400px
+  }
+}

@@ -1,5 +1,5 @@
 <div class="media">
- <a href="/"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
+ <a href="/employerProfile"><img src="/images/arrow1.png" class="backArrow" alt="backtomain"></a>
   <div class="media-body">
      <a href="/"><img src="/images/icons/brand1.png" class="mr-3" alt="logo-Jobber" id="brandIcon1"></a>
      <br></br>
@@ -11,8 +11,8 @@
 <h4 style="text-align: center;">JOB OFFER</h4>
 <ul class="list-group">
 <form method = "POST" action="/employerProfile/hiringPropositions/{{this._id}}/delete">
-<li class="list-group-item"> <strong>Employee Name: </strong> {{this.employeeId.nameEmployee}}</li>
-<li class="list-group-item"><strong>Offer Status: </strong> {{this.status}}</li>
+<li class="list-group-item"> <strong>Offer sent to: </strong>{{this.employeeId.nameEmployee}} {{this.employeeId.secondnameEmployee}}</li>
+<li class="list-group-item"><strong>Status: </strong> {{this.status}}</li>
 <li class="list-group-item"><strong>Message: </strong><br><br>{{this.offerMessage}}</li>
 {{#if this.isAccepted}}
 <li class="list-group-item"><strong>Email: </strong>{{this.employeeId.emailEmployee}}</li>

@@ -3,4 +3,5 @@ module.exports = {
   backend: ['MySQL','Python','C++','Csharp','Java','Node.js','Ruby','Ruby on rails','MariaDB','Symfony','OpenCV','PHP','MongoDB','Django'],
   devops: ['Ansible','Docker','Bash','Linux Kernel','Git','Debian','AWS','Azure',],
   data: ['Kubernetes','Grafana','Apache Spark','Python','Google Analytics','Hadoop','Kibana','R','TensorFlow']
-}
+};
+

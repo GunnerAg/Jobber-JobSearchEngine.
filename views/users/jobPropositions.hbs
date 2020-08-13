@@ -11,8 +11,14 @@
 {{#each offerData}}
 <h4 style="text-align: center;">JOB OFFER</h4>
 <ul class="list-group">
-<li class="list-group-item"><strong>Status: </strong>{{this.status}}</li>
 <li class="list-group-item"><strong>Company name: </strong> {{this.companyId.nameEmployer}} </li>
+{{#if this.hasEmployees}}
+<li class="list-group-item"><strong>Number of employees: </strong> {{this.companyId.NumbOfEmployees}} </li>
+ {{/if}}
+{{#if this.hasAdress}}
+<li class="list-group-item"><strong>Adress: </strong> {{this.companyId.adress}} </li>
+{{/if}}
+<li class="list-group-item"><strong>Status: </strong>{{this.status}}</li>
 <li class="list-group-item"><strong>Message: </strong> <br></br>{{this.offerMessage}}</li>
 </ul>
 

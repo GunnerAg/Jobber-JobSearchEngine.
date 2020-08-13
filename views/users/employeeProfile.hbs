@@ -1,5 +1,5 @@
 <div class="media">
- <a href="/loginEmployee"><img src="/images/arrow1.png"  alt="backtomain" class="backArrow"></a>
+ <a href="/"><img src="/images/arrow1.png"  alt="backtomain" class="backArrow"></a>
  <a href='/logout' ><img src="/images/logout.png" class="logOutIcon"></a>
   <div class="media-body">
     <a href="/" ><img src="/images/icons/brand1.png" alt="logo-Jobber" class="mr-3" id="brandIcon1"></a>
@@ -16,19 +16,33 @@
 <br></br>
 <div>
     <h5 class="mt-0" style="text-align: center;">YOUR PROFILE DETAILS</h5>
-  <ul class="list-group">
-    <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployee}} &nbsp; &nbsp;
-    <strong>Second Name: </strong> {{loggedInUser.secondnameEmployee}} &nbsp; &nbsp;  
-    <strong>Age: </strong> {{loggedInUser.age}}</li>
-    <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployee}}   &nbsp; &nbsp;
-    <strong>Adress: </strong> {{loggedInUser.adressEmployee}}</li>
-    <li class="list-group-item"><strong>Biography: </strong> {{loggedInUser.biography}}</li>
-  </ul>
- <div style="text-align: end;">
-    <button type="submit" class="btn btn-primary" onclick="window.location.href='/employeeProfile/edit';" id="btns">EDIT</button>
- </div>
- <br></br>
+    <br></br>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+         <img class="profilePic" src='{{loggedInUser.imageEmployee}}'>
+          <br></br>
+      </div>
+
+        <div class="col-sm">
+          <ul class="list-group"></ul>
+            <li class="list-group-item"><strong>Name: </strong> {{loggedInUser.nameEmployee}} <br></br>
+            <strong>Second Name: </strong> {{loggedInUser.secondnameEmployee}}  <br></br>  
+            <strong>Age: </strong> {{loggedInUser.age}}</li>
+            <li class="list-group-item"><strong>Email: </strong> {{loggedInUser.emailEmployee}} <br></br>
+            <strong>Adress: </strong> {{loggedInUser.adressEmployee}} {{#unless loggedInUser.adressEmployee }} Please enter an adress{{/unless}}</li>
+            <li class="list-group-item"><strong>Biography: </strong> {{loggedInUser.biography}}{{#unless loggedInUser.biography }} Tell your future boss why you are awesome!{{/unless}}</li>
+           </ul>  
+
+        <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='/employeeProfile/edit';" id="btns" >EDIT</button>
+    </div>
+  </div>
+    
+</div>
+
+ <br></br>
 
 <h4 class="mt-0" style="text-align: center;">KEYWORDS</h4>
 <h5 class="mt-0" style="text-align: center;">{{loggedInUser.keywords}}</h5>
@@ -46,7 +60,6 @@
 
 <div class="container">
   <div class="row">
-   {{! -- SOME SUPER CRAZY CODE --}}
     <div class="col">
       <h4 style="text-align: center;"><strong>BACKEND</strong></h4>
        

@@ -56,7 +56,7 @@ JOBBER is an employment application in which employers and employees get in cont
   - body: 
     - name
     - date
-    - location
+    - number of employees
     - description
 - GET /events/:id
   - renders the event detail page
@@ -71,6 +71,7 @@ JOBBER is an employment application in which employers and employees get in cont
 
 Employee model:
 
+    -imageEmployee
     -name.
     -secondname.
     -age.
@@ -79,9 +80,9 @@ Employee model:
     -passwordHash.
 
 Employer model:
-
+    
     -companyName.
-    -location.
+    -Number of employees.
     -adress.
     -email.
     -passwordHash.
@@ -108,7 +109,7 @@ owner: ObjectId<User>
 name: String
 description: String
 date: Date
-location: String
+NumbOfEmployees: String
 attendees: [ObjectId<User>]
 ``` 
 

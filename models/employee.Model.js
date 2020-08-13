@@ -9,6 +9,10 @@ for (let key in data ){
 }
 
 const employeeSchema = new Schema({
+    imageEmployee:{
+      type: String,
+      default: 'https://res.cloudinary.com/dzzpwrdae/image/upload/v1597312251/n3vbei6rbel2oqpauox4.png',
+    },
     /*Define schema here */
     nameEmployee: {
       type: String, 
