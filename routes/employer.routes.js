@@ -89,7 +89,7 @@ router.post('/employerProfile/recruit', (req, res, next) => {
     //---------------------//
      let result = JSON.parse(JSON.stringify(employeeData)).map((myObj) => {
       myObj.hasAdress = !!myObj.adressEmployee
-     
+      myObj.hasBio = !!myObj.biography
       return myObj
     })
     //--------------------------------**

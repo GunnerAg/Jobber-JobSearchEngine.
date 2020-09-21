@@ -294,4 +294,13 @@ h3 {
   align-items: center;
   flex-direction: column; }
 
+.profilePics {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 200px; }
+
+#profilePics {
+  height: 150px; }
+
 /*# sourceMappingURL=style.css.map */

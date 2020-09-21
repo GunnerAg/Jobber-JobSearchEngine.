@@ -7,18 +7,21 @@
 </div>
 <br></br>
 
-
 {{#each employeeData}}
+<div class="row no-gutters">
+ <div class="col-12 col-sm-6 col-md-8">
    <ul class="list-group">
       <li class="list-group-item">
       <strong>Name: </strong>{{this.nameEmployee}} {{this.secondnameEmployee}} <br></br> 
       <strong>Age: </strong>{{this.age}}  <br></br> 
-   {{#if this.hasAdress}}
+      {{#if this.hasAdress}}
       <strong>Adress: </strong>{{this.adressEmployee}}</li>
+      {{/if }}
+       {{#if this.hasBio}}
+      <li class="list-group-item"><strong>Bio: </strong>{{this.biography}}</li>
       {{/if }}
       <li class="list-group-item" id="resultRec"><strong>Skillset: </strong>{{this.keywords}} </li>
    </ul>
-
    <div class="centered">
    {{#if this.match}}
     <button type="button" disabled="true" class="btn btn-primary" id="btns">OFFER SENT</button>
@@ -28,8 +31,12 @@
    </div>
 <hr>
 <br></br>
+</div>
+<div class="col-6 col-md-4">
+<img id="profilePics" src='{{this.imageEmployee}}'>
+</div>
+</div>
 {{/each}}
-
 
 
 {{#if errorMessage}}
